@@ -1,8 +1,3 @@
-# -*- encoding: utf-8 -*-
-"""
-Copyright (c) 2019 - present AppSeed.us
-"""
-
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
@@ -26,10 +21,10 @@ def pages(request):
         
     except template.TemplateDoesNotExist:
 
-        html_template = loader.get_template( 'page-404.html' )
+        html_template = loader.get_template('page-404.html')
         return HttpResponse(html_template.render(context, request))
 
     except:
     
-        html_template = loader.get_template( 'page-500.html' )
+        html_template = loader.get_template('page-500.html')
         return HttpResponse(html_template.render(context, request))
