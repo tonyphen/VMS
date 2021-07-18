@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Health Check {% endblock %}
+{% block breadcrumb %}
+    <li class="breadcrumb-item active" aria-current="page">Health Check</li>
+{% endblock %}
+{% block content %}
+    <main class="c-main">
+        <div class="container-fluid">
+            <div class="fade-in">
+                <a href="{% url 'hc_create' %}" class="btn btn-sm btn-outline-info shadow mb-2">Thêm</a>
+                <div class="row">
+                    {% for hc in hc_list %}
+                        <div class="col-sm-6 col-md-4">
+
+                            <div class="card shadow">
+                                <div class="card-header bg-facebook"><strong class="text-uppercase text-white">{{ hc.name }}</strong>
+                                    <a href="{% url 'hc_update' hc.id %}" class="float-right text-white">Cập nhật</a>
+                                </div>
+                                <div class="card-body">
+                                    <p>{{ hc.ngay }}</p>
+                                    <p>{{ hc.noi_dung }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row justify-content-between">
+                                        <a href="{% url 'hc_delete' hc.pk %}" class="btn btn-sm btn-outline-danger">Xóa</a>
+                                        <a href="{% url 'hc_items' hc.pk %}" class="btn btn-sm btn-outline-primary">Chi tiết</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

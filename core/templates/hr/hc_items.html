@@ -1,0 +1,80 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Health Check {% endblock %}
+{% block breadcrumb %}
+    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'hc_list' %}">Health Check</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Health Check</li>
+{% endblock %}
+
+{% block content %}
+    <main class="c-main">
+        <div class="container-fluid">
+            <div class="fade-in">
+                <div class="row">
+                    <div class="col-sm-12 pb-3">
+                        <a href="{% url 'hc_item_create' hc_id=hc_id %}" class="btn btn-outline-primary btn-sm">Thêm</a>
+                        <a href="#" class="btn btn-sm btn-outline-danger">Import Excel</a>
+                    </div>
+                    <div class="search-list col-sm-12">
+
+                        <table id="aTable" class="display table-hover table-striped" style="grid-auto-rows:auto ">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>STT
+                                </th>
+                                <th scope="row">Họ Tên
+                                </th>
+                                <th scope="row">MSNV
+                                </th>
+                                <th scope="row">Số CMND
+                                </th>
+                                <th scope="row">Số Điện thoại
+                                </th>
+                                <th>Giới tính
+                                </th>
+                                <th>Công Ty
+                                </th>
+                                <th>Giờ khám
+                                </th>
+                                <th>Sửa
+                                </th>
+                                <th>Xóa
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for hc in hc_items %}
+                                <tr>
+                                    <td>{{ hc.stt }}</td>
+                                    <td>{{ hc.ho_ten }}</td>
+                                    <td>{{ hc.msnv }}</td>
+                                    <td>{{ hc.cmnd }}</td>
+                                    <td>{{ hc.so_dt }}</td>
+                                    <td>{{ hc.gioi_tinh }}</td>
+                                    <td>{{ hc.cong_ty }}</td>
+                                    <td>{{ hc.gio_kham }}</td>
+                                    <td><a class="btn btn-sm btn-outline-primary" href="{% url 'hc_item_update' hc_id hc.id%}">Cập nhật</a></td>
+                                    <td><a class="btn btn-sm btn-outline-danger" href="#">Xóa</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <script>
+                                $(document).ready(function () {
+                                    $('#aTable').DataTable({
+                                        "pageLength": {{ pageLength }}
+                                    });
+                                });
+                            </script>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+{% endblock %}
