@@ -11,4 +11,6 @@ urlpatterns = [
     path('detail/<int:hc_id>/', views.hc_items, name='hc_items'),
     path('detail/<int:hc_id>/create/', views.hc_item_create, name='hc_item_create'),
     path('detail/<int:hc_id>/update/<int:id>/', views.hc_item_update, name='hc_item_update'),
+    path('detail/<int:hc_id>/delete/<int:id>/', views.hc_item_delete, name='hc_item_delete'),
+    path('detail/<int:hc_id>/upload/', views.hc_item_upload, name='hc_item_upload'),
 ]

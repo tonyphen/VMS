@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-sm-12 pb-3">
                         <a href="{% url 'hc_item_create' hc_id=hc_id %}" class="btn btn-outline-primary btn-sm">Thêm</a>
-                        <a href="#" class="btn btn-sm btn-outline-danger">Import Excel</a>
+                        <a href="{% url 'hc_item_upload' hc_id=hc_id %}" class="btn btn-sm btn-outline-danger">Import Excel</a>
                     </div>
                     <div class="search-list col-sm-12">
 
@@ -46,7 +46,7 @@
                                     <td>{{ hc.cong_ty }}</td>
                                     <td>{{ hc.gio_kham }}</td>
                                     <td><a class="btn btn-sm btn-outline-primary" href="{% url 'hc_item_update' hc_id hc.id%}">Cập nhật</a></td>
-                                    <td><a class="btn btn-sm btn-outline-danger" href="#">Xóa</a></td>
+                                    <td><a class="btn btn-sm btn-outline-danger" href="{% url 'hc_item_delete' hc_id hc.id%}">Xóa</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>

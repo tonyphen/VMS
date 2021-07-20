@@ -1,8 +1,11 @@
+from django.http import HttpResponse
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from django.conf import settings
+from tablib import Dataset
 
-from apps.basic.utilities import created_updated
+from apps.basic.utilities import created_updated, HealthCheckItemResource
 from apps.hr import models, forms
 
 
@@ -53,7 +56,7 @@ def hc_item_create(request, hc_id):
         if form.is_valid():
             form.instance.hc_id = hc_id
             form.save()
-            return redirect('hc_items', {'id': hc_id})
+            return redirect('hc_items', hc_id=hc_id)
 
     return render(request, 'hr/hc_item_create.html', {'form': form, 'hc_id': hc_id})
 
@@ -68,3 +71,29 @@ def hc_item_update(request, hc_id, id):
 
     return render(request, "hr/hc_item_update.html", {'form': form, 'hc_id': hc_id, 'id': id})
 
+
+def hc_item_delete(request, hc_id, id):
+    obj = get_object_or_404(models.HealthCheckItem, id=id)
+    if request.method == "POST":
+        obj.delete()
+        return redirect('hc_items', hc_id=hc_id)
+    return render(request, "hr/hc_item_delete.html", {'item': obj, 'hc_id': hc_id})
+
+
+def hc_item_upload(request):
+    if request.method == 'POST':
+        hc_resource = HealthCheckItemResource()
+        dataset = Dataset()
+        new_hc_items = request.FILES['hc_items']
+        if not new_hc_items.endswith('xlsx'):
+            messages.info(request, 'Wrong file format')
+            return render(request,'hr/hc_item_upload.html')
+        imported_data = dataset.load(new_hc_items.read(), format='xlsx')
+        for data in imported_data:
+            value = models.HealthCheckItem(
+                data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9],
+                data[10], data[11], data[12], data[13], data[14], data[15], data[16]
+            )
+            value.save()
+
+    return render(request, 'hr/hc_item_upload.html')
