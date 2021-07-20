@@ -64,7 +64,7 @@ def hc_item_update(request, hc_id, id):
     if form.is_valid():
         form.instance.hc_id = hc_id
         form.save()
-
+        return redirect('hc_items', hc_id)
 
     return render(request, "hr/hc_item_update.html", {'form': form, 'hc_id': hc_id, 'id': id})
 

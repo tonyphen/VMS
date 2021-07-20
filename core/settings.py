@@ -30,8 +30,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'  # Enable the inner app 
+    'crispy_forms',
+    'bootstrap4',
+    'bootstrap_datepicker_plus',
+
+    'apps.basic',  # Enable the inner basic
+    'apps.hr',
 ]
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -45,8 +52,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
-LOGIN_REDIRECT_URL = "home"   # Route defined in app/urls.py
-LOGOUT_REDIRECT_URL = "home"  # Route defined in app/urls.py
+LOGIN_REDIRECT_URL = "home"   # Route defined in basic/urls.py
+LOGOUT_REDIRECT_URL = "home"  # Route defined in basic/urls.py
 TEMPLATE_DIR = os.path.join(BASE_DIR, "core/templates")  # ROOT dir for templates
 
 TEMPLATES = [
@@ -111,7 +118,7 @@ USE_TZ = True
 
 #############################################################
 # SRC: https://devcenter.heroku.com/articles/django-assets
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
@@ -125,3 +132,8 @@ STATICFILES_DIRS = (
 )
 #############################################################
 #############################################################
+
+# Data Table
+
+PAGE_LENGTH = 15
+PAGINATION = 100

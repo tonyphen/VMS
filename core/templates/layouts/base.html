@@ -1,13 +1,7 @@
 <!DOCTYPE html>
-<!--
-* CoreUI - Free Bootstrap Admin Template
-* @version v3.2.0
-* @link https://coreui.io
-* Copyright (c) 2020 creativeLabs Łukasz Holeczek
-* Licensed under MIT (https://coreui.io/license)
--->
+{% load static %}
 <html lang="en">
-  <head>
+<head>
     <base href="./">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +10,7 @@
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <title>
-      Django Dashboard CoreUI - {% block title %}{% endblock %} | AppSeed
+        Django Dashboard CoreUI - {% block title %}{% endblock %} | AppSeed
     </title>
     <link rel="apple-touch-icon" sizes="57x57" href="/static/assets/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/static/assets/favicon/apple-icon-60x60.png">
@@ -35,36 +29,50 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/static/assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    
+
     <!-- Main styles for this application-->
     <link href="/static/assets/css/style.css" rel="stylesheet">
-
+    <link href="{% static 'assets/css/jquery.dataTables.min.css' %}" rel="stylesheet">
     <!-- Specific Page CSS goes HERE  -->
     {% block stylesheets %}{% endblock stylesheets %}
+    {{ form.media }}
+    {% load bootstrap4 %}
+    {% bootstrap_javascript jquery='full' %}
+</head>
+<body class="c-app">
 
-  </head>
-  <body class="c-app">
+{% include 'includes/sidebar.html' %}
 
-    {% include 'includes/sidebar.html' %}
+<div class="c-wrapper c-fixed-components">
 
-    <div class="c-wrapper c-fixed-components">
+    {% include 'includes/navigation.html' %}
+    <div class="c-subheader px-3">
+        <!-- Breadcrumb-->
+        <ol class="breadcrumb border-0 m-0">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            {% block breadcrumb %}
 
-      {% include 'includes/navigation.html' %}
+            {% endblock %}
 
-      <div class="c-body">
+            <!-- Breadcrumb Menu-->
+        </ol>
+    </div>
+    <div class="c-body">
 
         {% block content %}{% endblock content %}
 
         {% include 'includes/footer.html' %}
-    
-      </div>
-    
+
     </div>
 
-    {% include 'includes/scripts.html' %}
+</div>
 
-    <!-- Specific Page JS goes HERE  -->
-    {% block javascripts %}{% endblock javascripts %}
+{% include 'includes/scripts.html' %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+{% endblock javascripts %}
 
   </body>
 </html>
