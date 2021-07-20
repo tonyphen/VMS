@@ -20,26 +20,17 @@
                         <table id="aTable" class="display table-hover table-striped" style="grid-auto-rows:auto ">
                             <thead class="thead-light">
                             <tr>
-                                <th>STT
-                                </th>
-                                <th scope="row">Họ Tên
-                                </th>
-                                <th scope="row">MSNV
-                                </th>
-                                <th scope="row">Số CMND
-                                </th>
-                                <th scope="row">Số Điện thoại
-                                </th>
-                                <th>Giới tính
-                                </th>
-                                <th>Công Ty
-                                </th>
-                                <th>Giờ khám
-                                </th>
-                                <th>Sửa
-                                </th>
-                                <th>Xóa
-                                </th>
+                                <th>STT</th>
+                                <th scope="row">Họ Tên</th>
+                                <th scope="row">MSNV</th>
+                                <th scope="row">Số CMND</th>
+                                <th scope="row">Số Điện thoại</th>
+                                <th scope="row">Số BHYT</th>
+                                <th>Giới tính</th>
+                                <th>Công Ty</th>
+                                <th>Giờ khám</th>
+                                <th>Sửa</th>
+                                <th>Xóa</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -50,6 +41,7 @@
                                     <td>{{ hc.msnv }}</td>
                                     <td>{{ hc.cmnd }}</td>
                                     <td>{{ hc.so_dt }}</td>
+                                    <td>{{ hc.so_bhyt }}</td>
                                     <td>{{ hc.gioi_tinh }}</td>
                                     <td>{{ hc.cong_ty }}</td>
                                     <td>{{ hc.gio_kham }}</td>
