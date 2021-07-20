@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'bootstrap4',
     'bootstrap_datepicker_plus',
+    'import_export',
 
     'apps.basic',  # Enable the inner basic
     'apps.hr',
