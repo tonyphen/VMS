@@ -49,8 +49,8 @@ class HCItemForm(forms.ModelForm):
         ]
         widgets = {
             'ho_ten': forms.TextInput(attrs={'style': 'text-transform:uppercase;'}),
-            'ngay_sinh': DatePickerInput(format='%d/%m/%Y'),
-            'ngay_kham': DatePickerInput(format='%d/%m/%Y'),
+            'ngay_sinh': DatePickerInput(format='%Y-%m-%d'),
+            'ngay_kham': DatePickerInput(format='%Y-%m-%d'),
             'gio_kham': TimePickerInput(format='%H:%M'),
             'gio_ketthuc': TimePickerInput(format='%H:%M'),
             'completed': forms.CheckboxInput,

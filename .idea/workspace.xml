@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a46c8cff-10fc-49df-80ea-5906c30f7913" name="Default Changelist" comment="commit">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/hr/migrations/0009_auto_20210720_1613.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/hr/hc_items.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/hr/hc_items.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/hr/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/static/assets/img/product.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/assets/img/product.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/accounts/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/accounts/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +106,8 @@
       <workItem from="1626748263768" duration="46000" />
       <workItem from="1626748322418" duration="1476000" />
       <workItem from="1626757049715" duration="5491000" />
+      <workItem from="1626774215222" duration="818000" />
+      <workItem from="1626782819018" duration="2723000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1626600394264</created>
@@ -129,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626772740781</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit">
+      <created>1626774247744</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1626774247744</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

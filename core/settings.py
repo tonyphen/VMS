@@ -109,14 +109,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC+7'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
-
+DATE_FORMAT = '%Y-%m-%d'
 #############################################################
 # SRC: https://devcenter.heroku.com/articles/django-assets
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -124,14 +124,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/media/'
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'core/static'),
 )
-#############################################################
+STATIC_URL = 'core/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 #############################################################
 
 # Data Table
