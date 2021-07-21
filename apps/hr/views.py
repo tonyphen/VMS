@@ -1,5 +1,3 @@
-from django.http import HttpResponse
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from django.conf import settings
@@ -80,14 +78,13 @@ def hc_item_delete(request, hc_id, id):
     return render(request, "hr/hc_item_delete.html", {'item': obj, 'hc_id': hc_id})
 
 
-def hc_item_upload(request):
+def hc_item_upload(request, hc_id):
     if request.method == 'POST':
         hc_resource = HealthCheckItemResource()
         dataset = Dataset()
-        new_hc_items = request.FILES['hc_items']
-        if not new_hc_items.endswith('xlsx'):
-            messages.info(request, 'Wrong file format')
-            return render(request,'hr/hc_item_upload.html')
+
+        new_hc_items = request.FILES['hc_itemlist']
+
         imported_data = dataset.load(new_hc_items.read(), format='xlsx')
         for data in imported_data:
             value = models.HealthCheckItem(
@@ -95,5 +92,6 @@ def hc_item_upload(request):
                 data[10], data[11], data[12], data[13], data[14], data[15], data[16]
             )
             value.save()
+        return redirect('hc_items', hc_id=hc_id)
 
-    return render(request, 'hr/hc_item_upload.html')
+    return render(request, 'hr/hc_item_upload.html', {'hc_id': hc_id})

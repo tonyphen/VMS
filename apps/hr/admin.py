@@ -9,5 +9,5 @@ admin.site.register(HealthCheckItem)
 
 
 class HealthCheckItemAdmin(ImportExportModelAdmin):
-    list_display = ('stt', 'ho_ten', 'msnv', 'ngay_sinh', 'gioi_tinh', 'so_bhyt', 'cmnd', 'cong_ty', 'dia_chi', 'so_dt',
-                    'ngay_kham', 'gio_kham', 'gio_ketthuc', 'status', 'completed')
+    list_display = ('id', 'stt', 'ho_ten', 'msnv', 'ngay_sinh', 'gioi_tinh', 'so_bhyt', 'cmnd', 'cong_ty', 'dia_chi',
+                    'so_dt', 'ngay_kham', 'gio_kham', 'gio_ketthuc', 'status', 'completed')

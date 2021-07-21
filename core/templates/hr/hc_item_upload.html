@@ -18,7 +18,7 @@
                             <div class="card-body">
                                 <form method="POST" enctype="multipart/form-data">
                                     {% csrf_token %}
-                                    <input type="file" name="hc_items">
+                                    <input type="file" name="hc_itemlist">
                                     <button class="btn btn-outline-primary" type="submit">Upload</button>
                                     <a class="btn btn-outline-warning" href="{% url 'hc_items' hc_id %}">Cancel </a>
                                 </form>
