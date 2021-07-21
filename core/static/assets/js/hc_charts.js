@@ -138,3 +138,20 @@ var polarAreaChart = new Chart(document.getElementById('canvas-6'), {
 });
 //# sourceMappingURL=charts.js.map
 
+const getChartData = () => {
+  console.log("fetching");
+  fetch("/expense_category_summary")
+    .then((res) => res.json())
+    .then((results) => {
+      console.log("results", results);
+      const category_data = results.expense_category_data;
+      const [labels, data] = [
+        Object.keys(category_data),
+        Object.values(category_data),
+      ];
+
+      renderChart(data, labels);
+    });
+};
+
+document.onload = getChartData();

@@ -116,7 +116,7 @@ USE_I18N = True
 USE_L10N = False
 
 USE_TZ = True
-DATE_FORMAT = '%Y-%m-%d'
+DATE_FORMAT = 'Y-m-d'
 #############################################################
 # SRC: https://devcenter.heroku.com/articles/django-assets
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

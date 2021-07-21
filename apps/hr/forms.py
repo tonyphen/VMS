@@ -18,7 +18,7 @@ class HCForm(forms.ModelForm):
             "attachment",
         ]
         widgets = {
-            'ngay': DatePickerInput(format='%d/%m/%Y'),
+            'ngay': DatePickerInput(format='%Y-%m-%d'),
         }
 
     def __init__(self, *args, **kwargs):

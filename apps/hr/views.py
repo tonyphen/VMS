@@ -1,4 +1,6 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from django.conf import settings
 from tablib import Dataset
@@ -8,9 +10,29 @@ from apps.hr import models, forms
 
 
 @login_required
+def hc_chart(request, id):
+    label = []
+    data = []
+
+    qs = models.HealthCheckItem.objects.filter(id=id, status__isnull=False).values('status').annotate(count=Count('id'))
+    for item in qs:
+        label.append(item['status'])
+        data.append(item['count'])
+    print(data)
+    return JsonResponse(data={
+        'label': label,
+        'data': data,
+    })
+
+
 def hc_list(request):
     hc_list = models.HealthCheck.objects.all()
-    return render(request, 'hr/hc_list.html', {'hc_list': hc_list})
+    data = []
+    for item in hc_list:
+        qs = models.HealthCheckItem.objects.filter(hc_id=item.id).values('status', 'hc_id').annotate(count=Count('id'))
+        data.append(qs)
+
+    return render(request, 'hr/hc_list.html', {'hc_list': hc_list, 'data': data})
 
 
 def hc_create(request):
@@ -44,8 +66,9 @@ def hc_delete(request, id):
 
 def hc_items(request, hc_id):
     items = models.HealthCheckItem.objects.filter(hc=hc_id)
+    hc = get_object_or_404(models.HealthCheck, id=hc_id)
     pageLength = settings.PAGE_LENGTH
-    return render(request, 'hr/hc_items.html', {'hc_items': items, 'hc_id': hc_id, 'pageLength': pageLength})
+    return render(request, 'hr/hc_items.html', {'hc_items': items, 'hc_id': hc_id, 'hc': hc, 'pageLength': pageLength})
 
 
 def hc_item_create(request, hc_id):

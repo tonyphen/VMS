@@ -3,7 +3,7 @@
 {% block title %} Health Check {% endblock %}
 {% block breadcrumb %}
     <li class="breadcrumb-item" aria-current="page"><a href="{% url 'hc_list' %}">Health Check</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Health Check</li>
+    <li class="breadcrumb-item active" aria-current="page"><strong>{{ hc.name }}</strong></li>
 {% endblock %}
 
 {% block content %}
