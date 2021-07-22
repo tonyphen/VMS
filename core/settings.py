@@ -4,6 +4,7 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 import os
+import mimetypes
 from decouple import config
 from unipath import Path
 import dj_database_url
@@ -30,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'crispy_forms',
     'bootstrap4',
     'bootstrap_datepicker_plus',
@@ -135,6 +137,7 @@ STATIC_URL = 'core/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #############################################################
+mimetypes.add_type('image/svg+xml', '.svg', True)
 
 # Data Table
 

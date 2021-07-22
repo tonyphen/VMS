@@ -18,7 +18,6 @@ def hc_chart(request, id):
     for item in qs:
         label.append(item['status'])
         data.append(item['count'])
-    print(label,data)
     return JsonResponse(data={
         'label': label,
         'data': data,

@@ -1,11 +1,11 @@
 {% extends "layouts/base.html" %}
-
+{% load static %}
 {% block title %} Dashboard {% endblock %} 
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
 
-  <link href="/static/assets/vendors/@coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
+  <link href="{% static 'assets/vendors/@coreui/chartjs/css/coreui-chartjs.css' %}" rel="stylesheet">
 
 {% endblock stylesheets %}
 
@@ -176,7 +176,7 @@
               <div class="card">
                 <div class="card-header bg-facebook content-center">
                   <svg class="c-icon c-icon-3xl text-white my-4">
-                    <use xlink:href="/static/assets/vendors/@coreui/icons/svg/brand.svg#cib-facebook-f"></use>
+                    <use xlink:href="{% static 'assets/vendors/@coreui/icons/svg/brand.svg#cib-facebook-f' %}"></use>
                   </svg>
                 </div>
                 <div class="card-body row text-center">
@@ -197,7 +197,7 @@
               <div class="card">
                 <div class="card-header bg-twitter content-center">
                   <svg class="c-icon c-icon-3xl text-white my-4">
-                    <use xlink:href="/static/assets/vendors/@coreui/icons/svg/brand.svg#cib-twitter"></use>
+                    <use xlink:href="{% static 'assets/vendors/@coreui/icons/svg/brand.svg#cib-twitter' %}"></use>
                   </svg>
                 </div>
                 <div class="card-body row text-center">
@@ -218,7 +218,7 @@
               <div class="card">
                 <div class="card-header bg-linkedin content-center">
                   <svg class="c-icon c-icon-3xl text-white my-4">
-                    <use xlink:href="/static/assets/vendors/@coreui/icons/svg/brand.svg#cib-linkedin"></use>
+                    <use xlink:href="{% static 'assets/vendors/@coreui/icons/svg/brand.svg#cib-linkedin' %}"></use>
                   </svg>
                 </div>
                 <div class="card-body row text-center">
@@ -387,7 +387,7 @@
                       <div class="progress-group">
                         <div class="progress-group-header align-items-end">
                           <svg class="c-icon progress-group-icon">
-                            <use xlink:href="/static/assets/vendors/@coreui/icons/svg/brand.svg#cib-google"></use>
+                            <use xlink:href="{% static 'assets/vendors/@coreui/icons/svg/brand.svg#cib-google' %}"></use>
                           </svg>
                           <div>Organic Search</div>
                           <div class="mfs-auto font-weight-bold mfe-2">191.235</div>
@@ -466,7 +466,8 @@
                     <tbody>
                       <tr>
                         <td class="text-center">
-                          <div class="c-avatar"><img class="c-avatar-img" src="/static/assets/img/avatars/1.jpg" alt="user@email.com"><span class="c-avatar-status bg-success"></span></div>
+                          <div class="c-avatar"><img class="c-avatar-img" src="{% static 'assets/img/avatars/1.jpg' %}">
+                          <span class="c-avatar-status bg-success"></span></div>
                         </td>
                         <td>
                           <div>Yiorgos Avraamu</div>
@@ -497,7 +498,8 @@
                       </tr>
                       <tr>
                         <td class="text-center">
-                          <div class="c-avatar"><img class="c-avatar-img" src="/static/assets/img/avatars/2.jpg" alt="user@email.com"><span class="c-avatar-status bg-danger"></span></div>
+                          <div class="c-avatar"><img class="c-avatar-img" src="{% static 'assets/img/avatars/2.jpg' %}">
+                          <span class="c-avatar-status bg-danger"></span></div>
                         </td>
                         <td>
                           <div>Avram Tarasios</div>
@@ -528,7 +530,8 @@
                       </tr>
                       <tr>
                         <td class="text-center">
-                          <div class="c-avatar"><img class="c-avatar-img" src="/static/assets/img/avatars/3.jpg" alt="user@email.com"><span class="c-avatar-status bg-warning"></span></div>
+                          <div class="c-avatar"><img class="c-avatar-img" src="{% static 'assets/img/avatars/3.jpg' %}">
+                          <span class="c-avatar-status bg-warning"></span></div>
                         </td>
                         <td>
                           <div>Quintin Ed</div>
@@ -559,7 +562,7 @@
                       </tr>
                       <tr>
                         <td class="text-center">
-                          <div class="c-avatar"><img class="c-avatar-img" src="/static/assets/img/avatars/4.jpg" alt="user@email.com"><span class="c-avatar-status bg-secondary"></span></div>
+                          <div class="c-avatar"><img class="c-avatar-img" src="{% static 'assets/img/avatars/4.jpg' %}"><span class="c-avatar-status bg-secondary"></span></div>
                         </td>
                         <td>
                           <div>Enéas Kwadwo</div>
@@ -590,7 +593,7 @@
                       </tr>
                       <tr>
                         <td class="text-center">
-                          <div class="c-avatar"><img class="c-avatar-img" src="/static/assets/img/avatars/5.jpg" alt="user@email.com"><span class="c-avatar-status bg-success"></span></div>
+                          <div class="c-avatar"><img class="c-avatar-img" src="{% static 'assets/img/avatars/5.jpg' %}"><span class="c-avatar-status bg-success"></span></div>
                         </td>
                         <td>
                           <div>Agapetus Tadeáš</div>
@@ -621,7 +624,7 @@
                       </tr>
                       <tr>
                         <td class="text-center">
-                          <div class="c-avatar"><img class="c-avatar-img" src="/static/assets/img/avatars/6.jpg" alt="user@email.com"><span class="c-avatar-status bg-danger"></span></div>
+                          <div class="c-avatar"><img class="c-avatar-img" src="{% static 'assets/img/avatars/6.jpg' %}"><span class="c-avatar-status bg-danger"></span></div>
                         </td>
                         <td>
                           <div>Friderik Dávid</div>
@@ -668,8 +671,8 @@
 {% block javascripts %}
 
     <!-- Plugins and scripts required by this view-->
-    <script src="/static/assets/vendors/@coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
-    <script src="/static/assets/vendors/@coreui/utils/js/coreui-utils.js"></script>
-    <script src="/static/assets/js/main.js"></script>
+    <script src="{% static 'assets/vendors/@coreui/chartjs/js/coreui-chartjs.bundle.js' %}"></script>
+    <script src="{% static 'assets/vendors/@coreui/utils/js/coreui-utils.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
 
 {% endblock javascripts %}
