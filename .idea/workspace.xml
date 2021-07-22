@@ -5,21 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a46c8cff-10fc-49df-80ea-5906c30f7913" name="Default Changelist" comment="commit">
-      <change afterPath="$PROJECT_DIR$/core/static/assets/js/hc_charts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/js/statistic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/hr/hc_chart.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/startenv.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/hr/migrations/0010_merge_0009_auto_20210720_1613_0009_auto_20210720_1640.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/hr/migrations/0011_alter_healthcheckitem_status.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/static/assets/js/vmschart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vms.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/hr/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/hr/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/hr/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/hr/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/hr/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/hr/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/hr/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/assets/js/charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/assets/js/charts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/hr/hc_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/hr/hc_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/static/assets/js/hc_charts.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/hr/hc_items.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/hr/hc_items.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/hr/hc_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/hr/hc_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/includes/scripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/scripts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/layouts/base-fullscreen.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/layouts/base-fullscreen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/layouts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/layouts/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/page-charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/page-charts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vms/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vms/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vms/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vms/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vms/wsgi.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +97,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/core/static/assets/js" />
     <property name="settings.editor.selected.configurable" value="PyConsoleConfigurable.Python Console" />
@@ -121,7 +136,8 @@
       <workItem from="1626748322418" duration="1476000" />
       <workItem from="1626757049715" duration="5491000" />
       <workItem from="1626774215222" duration="818000" />
-      <workItem from="1626782819018" duration="25252000" />
+      <workItem from="1626782819018" duration="27557000" />
+      <workItem from="1626914750346" duration="23789000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1626600394264</created>
@@ -172,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626835003015</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="commit">
+      <created>1626874782866</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1626874782866</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

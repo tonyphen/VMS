@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 
     'apps.basic',  # Enable the inner basic
     'apps.hr',
+    'apps.master_file',
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"

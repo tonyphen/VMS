@@ -14,11 +14,11 @@ def hc_chart(request, id):
     label = []
     data = []
 
-    qs = models.HealthCheckItem.objects.filter(id=id, status__isnull=False).values('status').annotate(count=Count('id'))
+    qs = models.HealthCheckItem.objects.filter(hc_id=id, status__isnull=False).values('status').annotate(count=Count('ho_ten'))
     for item in qs:
         label.append(item['status'])
         data.append(item['count'])
-    print(data)
+    print(label,data)
     return JsonResponse(data={
         'label': label,
         'data': data,
@@ -27,12 +27,7 @@ def hc_chart(request, id):
 
 def hc_list(request):
     hc_list = models.HealthCheck.objects.all()
-    data = []
-    for item in hc_list:
-        qs = models.HealthCheckItem.objects.filter(hc_id=item.id).values('status', 'hc_id').annotate(count=Count('id'))
-        data.append(qs)
-
-    return render(request, 'hr/hc_list.html', {'hc_list': hc_list, 'data': data})
+    return render(request, 'hr/hc_list.html', {'hc_list': hc_list})
 
 
 def hc_create(request):

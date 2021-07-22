@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 HC_STATUS = (
+    ("Chưa tiêm", "Chưa tiêm"),
     ("Đã tiêm", "Đã tiêm"),
     ("Hoãn tiêm", "Hoãn tiêm"),
     ("Không được tiêm", "Không được tiêm"),
@@ -46,6 +47,8 @@ class HealthCheck(models.Model):
     def __str__(self):
         return str(self.name)
 
+    def get_items(self):
+        return HealthCheckItem.objects.filter(hc_id=self.id)
 
 class HealthCheckItem(models.Model):
     hc = models.ForeignKey(HealthCheck, related_name='items', on_delete=models.CASCADE)

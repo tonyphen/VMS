@@ -1,8 +1,16 @@
 {% extends "layouts/base.html" %}
-
+{% load static %}
 {% block title %} Health Check {% endblock %}
 {% block breadcrumb %}
     <li class="breadcrumb-item active" aria-current="page">Health Check</li>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    {#    <script src="{% static 'assets/vendors/@coreui/chartjs/js/coreui-chartjs.bundle.js' %}"></script>#}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"></script>
+    <script src="{% static 'assets/js/vmschart.js' %}"></script>
+
 {% endblock %}
 
 {% block content %}
@@ -10,21 +18,6 @@
         <div class="container-fluid">
 
             <div class="fade-in">
-                <div class="card-columns cols-sm-2">
-                    <div class="card">
-                        <div class="card-header">Status
-                            <div class="card-header-actions"><a class="card-header-action" href="#"
-                                                                target="_blank"><small
-                                    class="text-muted">docs</small></a></div>
-                        </div>
-                        <div class="card-body">
-                            <div class="c-chart-wrapper">
-                                <canvas id="canvas-6"></canvas>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <a href="{% url 'hc_create' %}" class="btn btn-sm btn-outline-info shadow mb-2">Thêm</a>
                 <div class="row">
                     {% for hc in hc_list %}
@@ -38,11 +31,20 @@
                                 <div class="card-body">
                                     <p>{{ hc.ngay }}</p>
                                     <p>{{ hc.noi_dung }}</p>
+                                    <canvas id="chart{{ hc.id }}" width="50" height="50"></canvas>
+                                    <script>
+                                        $.ajax({
+                                            method: "GET",
+                                            url: "{% url 'hc_chart' hc.id %}",
+                                            success: function (data) {
+                                                setDoughnutChart('chart{{ hc.id }}', data.label, data.data)
+                                            },
+                                            error: function (error_data) {
+                                                console.log(error_data)
+                                            }
+                                        })
+                                    </script>
 
-                                    <div class="c-chart-wrapper">
-{#                                        <canvas id="canvas-6" data-url="{% url 'hc_chart' hc.id %}"></canvas>#}
-                                        <canvas id="canvas-6"></canvas>
-                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="row justify-content-between">
@@ -61,29 +63,4 @@
             </div>
         </div>
     </main>
-{% endblock %}
-{% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <script src="/static/assets/vendors/@coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
-    <script src="/static/assets/js/charts.js"></script>
-
-    <script>
-        let paymentSuccessCtx = document.getElementById("canvas-6").getContext("2d");
-        let paymentSuccessChart = new Chart(paymentSuccessCtx, {
-            type: "pie",
-            options: {
-                responsive: true,
-                layout: {
-                    padding: {
-                        left: 0,
-                        right: 0,
-                        top: 0,
-                        bottom: 25
-                    }
-                }
-            }
-        });
-
-    </script>
 {% endblock %}

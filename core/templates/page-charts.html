@@ -1,11 +1,11 @@
 {% extends "layouts/base.html" %}
-
+{% load static %}
 {% block title %} Charts {% endblock %} 
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
 
-  <link href="/static/assets/vendors/@coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
+  <link href="{% static 'assets/vendors/@coreui/chartjs/css/coreui-chartjs.css' %}" rel="stylesheet">
 
 {% endblock stylesheets %}
 
@@ -85,7 +85,7 @@
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 
-  <script src="/static/assets/vendors/@coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
-  <script src="/static/assets/js/charts.js"></script>
+  <script src="{% static 'assets/vendors/@coreui/chartjs/js/coreui-chartjs.bundle.js' %}"></script>
+  <script src="{% static 'assets/js/charts.js' %}"></script>
 
 {% endblock javascripts %}
