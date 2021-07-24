@@ -7,4 +7,5 @@ urlpatterns = [
     path("", include("apps.basic.urls")),            # UI Kits Html files
     path('hr/', include("apps.hr.urls")),
     path('mf/', include("apps.master_file.urls")),
+    path('sales/', include("apps.sales.urls")),
 ]

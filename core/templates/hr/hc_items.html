@@ -1,6 +1,22 @@
 {% extends "layouts/base.html" %}
-
+{% load static %}
 {% block title %} Health Check {% endblock %}
+
+{% block stylesheets %}
+
+    {#    <link href="{% static 'assets/vendors/datatables/css/datatables.min.css' %}" rel="stylesheet">#}
+    {#    <link href="{% static 'assets/vendors/datatables/css/select.bootstrap4.min.css' %}" rel="stylesheet">#}
+    {% include 'includes/dataTables_css.html' %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{% static 'assets/vendors/datatables/js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'assets/vendors/datatables/js/dataTables.select.min.js' %}"></script>
+    {% include 'includes/dataTables_scripts.html' %}
+
+{% endblock %}
+
+
 {% block breadcrumb %}
     <li class="breadcrumb-item" aria-current="page"><a href="{% url 'hc_list' %}">Health Check</a></li>
     <li class="breadcrumb-item active" aria-current="page"><strong>{{ hc.name }}</strong></li>
@@ -10,64 +26,90 @@
     <main class="c-main">
         <div class="container-fluid">
             <div class="fade-in">
+                <div class="row pb-3">
+                    <a href="{% url 'hc_item_create' hc_id=hc_id %}"
+                       class="btn btn-outline-primary btn-sm pr-3">Thêm</a>
+                    <a href="{% url 'hc_item_upload' hc_id=hc_id %}" class="btn btn-sm btn-outline-danger px-2">Import
+                        Excel</a>
+
+                    <div class="px-5">
+                        Toggle column:
+                        <a class="toggle-vis" data-column="1">Họ tên</a> -
+                        <a class="toggle-vis" data-column="2">MSNV</a> -
+                        <a class="toggle-vis" data-column="3">Số CMND</a> -
+                        <a class="toggle-vis" data-column="4">Số điện thoại</a> -
+                        <a class="toggle-vis" data-column="5">Số BHTY</a> -
+                        <a class="toggle-vis" data-column="6">Giới tính</a>
+                    </div>
+                </div>
                 <div class="row">
-                    <div class="col-sm-12 pb-3">
-                        <a href="{% url 'hc_item_create' hc_id=hc_id %}" class="btn btn-outline-primary btn-sm">Thêm</a>
-                        <a href="{% url 'hc_item_upload' hc_id=hc_id %}" class="btn btn-sm btn-outline-danger">Import Excel</a>
-                    </div>
-                    <div class="search-list col-sm-12">
-
-                        <table id="aTable" class="display table-hover table-striped" style="grid-auto-rows:auto ">
-                            <thead class="thead-light">
+                    <table id="aTable" class="dataTable display table-hover table-striped">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ Tên</th>
+                            <th>MSNV</th>
+                            <th>Số CMND</th>
+                            <th>Số Điện thoại</th>
+                            <th>Số BHYT</th>
+                            <th>Giới tính</th>
+                            <th>Công Ty</th>
+                            <th>Giờ khám</th>
+                            <th>Giờ kết thúc</th>
+                            <th>Tình trạng</th>
+                            <th>Xóa</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for hc in hc_items %}
                             <tr>
-                                <th>STT</th>
-                                <th scope="row">Họ Tên</th>
-                                <th scope="row">MSNV</th>
-                                <th scope="row">Số CMND</th>
-                                <th scope="row">Số Điện thoại</th>
-                                <th scope="row">Số BHYT</th>
-                                <th>Giới tính</th>
-                                <th>Công Ty</th>
-                                <th>Giờ khám</th>
-                                <th>Sửa</th>
-                                <th>Xóa</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for hc in hc_items %}
-                                <tr>
-                                    <td>{{ hc.stt }}</td>
-                                    <td>{{ hc.ho_ten }}</td>
-                                    <td>{{ hc.msnv }}</td>
-                                    <td>{{ hc.cmnd }}</td>
-                                    <td>{{ hc.so_dt }}</td>
-                                    <td>{{ hc.so_bhyt }}</td>
-                                    <td>{{ hc.gioi_tinh }}</td>
-                                    <td>{{ hc.cong_ty }}</td>
-                                    <td>{{ hc.gio_kham }}</td>
-                                    <td><a class="btn btn-sm btn-outline-primary" href="{% url 'hc_item_update' hc_id hc.id%}">Cập nhật</a></td>
-                                    <td><a class="btn btn-sm btn-outline-danger" href="{% url 'hc_item_delete' hc_id hc.id%}">Xóa</a></td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                            <script>
-                                $(document).ready(function () {
-                                    $('#aTable').DataTable({
-                                        "pageLength": {{ pageLength }}
-                                    });
-                                });
-                            </script>
+                                <td>{{ hc.stt }}</td>
+                                <td><a href="{% url 'hc_item_update' hc_id hc.id %}">{{ hc.ho_ten }}</a></td>
+                                <td>{{ hc.msnv }}</td>
+                                <td>{{ hc.cmnd }}</td>
+                                <td>{{ hc.so_dt }}</td>
+                                <td>{{ hc.so_bhyt }}</td>
+                                <td>{{ hc.gioi_tinh }}</td>
+                                <td>{{ hc.cong_ty }}</td>
+                                <td>{{ hc.gio_kham }}</td>
+                                <td>{{ hc.gio_kethuc }}</td>
+                                <td>{{ hc.status }}</td>
 
-                        </table>
-                    </div>
+
+                                <td><a class="btn btn-sm btn-outline-danger"
+                                       href="{% url 'hc_item_delete' hc_id hc.id %}">Xóa</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <script>
+                            $(document).ready(function () {
+                                var table = $('#aTable').DataTable({
+                                    "pageLength": {{ pageLength }},
+                                    select: true,
+                                    dom: 'Bfrtip',
+                                    buttons: [
+                                        'copy', 'excel', 'pdf', 'print'
+                                    ],
+                                });
+
+                                $('a.toggle-vis').on('click', function (e) {
+                                    e.preventDefault();
+                                    // Get the column API object
+                                    var column = table.column($(this).attr('data-column'));
+                                    // Toggle the visibility
+                                    column.visible(!column.visible());
+                                });
+
+                            });
+                        </script>
+
+                    </table>
                 </div>
             </div>
         </div>
     </main>
 {% endblock %}
 
-{% block javascripts %}
-    <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 
-{% endblock %}
+
+

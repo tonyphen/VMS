@@ -11667,7 +11667,7 @@ html:not([dir="rtl"]) .c-switch-label .c-switch-slider::after {
 
 .table th,
 .table td {
-  padding: 0.75rem;
+  padding: 0.5rem;
   vertical-align: top;
   border-top: 1px solid;
   border-top-color: #d8dbe0;

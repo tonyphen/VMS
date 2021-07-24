@@ -53,11 +53,11 @@ table.dataTable thead .sorting_desc_disabled {
 }
 
 table.dataTable tbody tr {
-    background-color: #fff
+    background-color: #B6D8FB
 }
 
 table.dataTable tbody tr.selected {
-    background-color: #b0bed9
+    background-color: #4B7AA8
 }
 
 table.dataTable tbody th, table.dataTable tbody td {

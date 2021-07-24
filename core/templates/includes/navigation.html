@@ -14,9 +14,80 @@
           </svg>
         </button>
         <ul class="c-header-nav d-md-down-none">
-          <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Dashboard</a></li>
-          <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Users</a></li>
-          <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Settings</a></li>
+          <li class="c-header-nav-item px-3 dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-tags"></use>
+                </svg>
+              Activities
+          </a>
+          <div class="dropdown-menu dropdown-menu-left pt-0">
+                <a class="dropdown-item" href="{% url 'hc_list' %}">
+                <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-bell"></use>
+                </svg> Puchase Request
+                </a>
+
+              <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="">
+                <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                </svg> Guest registration
+                </a>
+                <a class="dropdown-item" href="#"></a>
+
+            </div>
+
+          </li>
+
+
+{#            Administration #}
+            <li class="c-header-nav-item px-3 dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-people"></use>
+                </svg>Administration
+            </a>
+            <div class="dropdown-menu dropdown-menu-right pt-0">
+              <div class="dropdown-header bg-light py-2"><strong>Health check</strong></div>
+                <a class="dropdown-item" href="{% url 'hc_list' %}">
+                <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-bell"></use>
+                </svg> Health Check
+                </a>
+
+              <div class="dropdown-header bg-light py-2"><strong>HR Admin</strong></div>
+                <a class="dropdown-item" href="">
+                <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                </svg> Employee list
+                </a>
+                <a class="dropdown-item" href="#"></a>
+
+            </div>
+          </li>
+
+            {#            Documentation #}
+            <li class="c-header-nav-item px-3 dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-book"></use>
+                </svg>Documentation
+            </a>
+            <div class="dropdown-menu dropdown-menu-left pt-0">
+              <a class="dropdown-item" href="{% url 'hc_list' %}">
+                <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-braille"></use>
+                </svg> VMS help and manual
+                </a>
+
+                <a class="dropdown-item" href="">
+                <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-library"></use>
+                </svg> Document library
+                </a>
+                <a class="dropdown-item" href="#"></a>
+
+            </div>
+          </li>
+
         </ul>
         <ul class="c-header-nav ml-auto mr-4">
           <li class="c-header-nav-item d-md-down-none mx-2"><a class="c-header-nav-link" href="#">
@@ -48,7 +119,8 @@
                 <svg class="c-icon mr-2">
                   <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-comment-square"></use>
                 </svg> Comments<span class="badge badge-warning ml-auto">42</span></a>
-              <div class="dropdown-header bg-light py-2"><strong>Settings</strong></div><a class="dropdown-item" href="#">
+              <div class="dropdown-header bg-light py-2"><strong>Settings</strong></div>
+                <a class="dropdown-item" href="#">
                 <svg class="c-icon mr-2">
                   <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
                 </svg> Profile</a><a class="dropdown-item" href="#">
