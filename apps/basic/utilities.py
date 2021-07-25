@@ -15,3 +15,4 @@ def created_updated(model, request):
 class HealthCheckItemResource(resources.ModelResource):
     class Meta:
         model = HealthCheckItem
+

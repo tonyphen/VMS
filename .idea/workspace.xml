@@ -5,119 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a46c8cff-10fc-49df-80ea-5906c30f7913" name="Default Changelist" comment="commit">
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0002_sortgroup_woodtype.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0003_auto_20210723_2204.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0004_length.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0005_auto_20210724_1113.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/sales/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/sales/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/sales/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/sales/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/sales/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/sales/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/sales/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/sales/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-bg_flat_0_888888_40x100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-bg_flat_0_aaaaaa_40x100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-bg_flat_75_ffffff_40x100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-bg_glass_25_e1f0f5_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-bg_glass_55_444444_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-bg_glass_65_ffffff_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-bg_glass_75_dadada_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-bg_inset-soft_95_fef1ec_1x100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-icons_222222_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-icons_309bbf_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-icons_454545_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-icons_bf3030_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/css/images/ui-icons_ffffff_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/img/login.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/js/chart.3.4.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/js/jquery-3.5.1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/css/buttons.bootstrap4.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/css/buttons.bootstrap5.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/css/buttons.dataTables.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/css/buttons.jqueryui.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/css/dataTables.bootstrap4.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/css/datatables.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/css/jquery.dataTables.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/css/select.bootstrap4.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/images/sort_asc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/images/sort_asc_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/images/sort_both.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/images/sort_desc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/images/sort_desc_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/buttons.html5.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/buttons.print.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/dataTables.bootstrap4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/dataTables.buttons.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/dataTables.select.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/datatables.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/jquery.dataTables.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/jquery.dataTables.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/jszip.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/pdfmake.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/select.bootstrap4.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/vfs_fonts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/includes/dataTables_css.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/includes/dataTables_scripts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/master_file/wood_definition.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/sales/sales_dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/665a8e2a-96f9-49f2-854e-2ce93d37be6d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/665a8e2a-96f9-49f2-854e-2ce93d37be6d.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0006_auto_20210725_1216.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/master_file/master_file_upload.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/basic/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/basic/utilities.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/master_file/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/master_file/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/master_file/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/assets/css/jquery.dataTables.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/css/jquery.dataTables.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/accounts/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/accounts/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/buttons-brand.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/buttons-brand.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/buttons-dropdowns.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/buttons-dropdowns.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/buttons-group.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/buttons-group.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/buttons.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/buttons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/hr/hc_items.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/hr/hc_items.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/icons-brand.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/icons-brand.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/icons-flag.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/icons-flag.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/icons-free.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/icons-free.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/includes/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/navigation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/includes/scripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/scripts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/includes/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/layouts/base-fullscreen.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/layouts/base-fullscreen.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/layouts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/layouts/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/master_file/profile_master.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/master_file/profile_master.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/notifications-alerts.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/notifications-alerts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/notifications-badge.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/notifications-badge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/notifications-modals.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/notifications-modals.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/page-404.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/page-404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/page-500.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/page-500.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/page-blank.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/page-blank.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/page-charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/page-charts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/page-widgets.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/page-widgets.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/parts/date-picker.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/parts/time-picker.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/sign-in.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/sign-in.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/sign-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/sign-up.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-breadcrumb.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-breadcrumb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-cards.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-cards.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-carousel.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-carousel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-collapse.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-collapse.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-colors.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-colors.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-forms.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-forms.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-jumbotron.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-jumbotron.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-list-group.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-list-group.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-navs.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-navs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-pagination.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-pagination.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-popovers.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-popovers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-progress.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-progress.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-scrollspy.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-scrollspy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-switches.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-switches.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-tables.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-tables.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-tabs.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-tabs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-tooltips.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-tooltips.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ui-typography.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/samples/ui-typography.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/master_file/wood_definition.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/master_file/wood_definition.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,6 +106,16 @@
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="EA" type="MQL4RunCompilerConfigurationTypeId" factoryName="MQL4 Build">
+      <sdk value="MQL4 SDK MetaTrader - EXNESS" />
+      <file value="$PROJECT_DIR$/EA-Scalper-2021.mq4" />
+      <encoding value="UTF-16" />
+      <buildDir value="C:\Users\kenny.VINAWOOD_COM\AppData\Roaming\MetaQuotes\Terminal\F5C18A2156882613427FB4ACF0892997\MQL4\Experts" />
+      <buildLogEncoding value="UTF-8" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -227,6 +132,7 @@
       <workItem from="1626774215222" duration="818000" />
       <workItem from="1626782819018" duration="27557000" />
       <workItem from="1626914750346" duration="72239000" />
+      <workItem from="1627101144940" duration="16746000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1626600394264</created>
@@ -298,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626973022262</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="commit">
+      <created>1627101190516</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1627101190517</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

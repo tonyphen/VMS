@@ -88,7 +88,7 @@
                                                     {
                                                         text: 'Import from Excel',
                                                         action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'hc_list' %}';
+                                                            window.location.href = '{% url 'wdefinition_upload' %}';
                                                         }
                                                     },
                                                     {
@@ -284,7 +284,65 @@
                                                     {
                                                         text: 'Import from Excel',
                                                         action: function (e, dt, node, config) {
+                                                            window.location.href = '{% url 'wdefinition_upload' %}';
+                                                        }
+                                                    },
+                                                    {
+                                                        text: 'Insert',
+                                                        action: function (e, dt, node, config) {
                                                             window.location.href = '{% url 'hc_list' %}';
+                                                        }
+                                                    }
+                                                ],
+                                            });
+
+                                            $('a.toggle-vis').on('click', function (e) {
+                                                e.preventDefault();
+                                                // Get the column API object
+                                                var column = table.column($(this).attr('data-column'));
+                                                // Toggle the visibility
+                                                column.visible(!column.visible());
+                                            });
+
+                                        });
+                                    </script>
+                                </table>
+                            </div>
+                            {# Length #}
+                            <div class="tab-pane pt-1" id="length" role="tabpanel">
+                                <table id="tblength" class="table display table-hover table-striped">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>Feet</th>
+                                        <th>Inch</th>
+                                        <th>MM</th>
+                                        <th>Freq Used</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in length_list %}
+                                        <tr>
+                                            <td><a class="bolded" href="#">{{ item.feet }}</a></td>
+                                            <td>{{ item.inch }}</td>
+                                            <td>{{ item.mm }}</td>
+                                            <td>{{ item.freqUse }}</td>
+                                            <td><a class="btn btn-sm btn-outline-danger" href="#">Xóa</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    <script>
+                                        $(document).ready(function () {
+                                            var table = $('#tblength').DataTable({
+                                                "pageLength": {{ pageLength }},
+                                                select: true,
+                                                dom: 'Bfrtip',
+                                                buttons: [
+                                                    'copy', 'excel', 'pdf', 'print',
+                                                    {
+                                                        text: 'Import from Excel',
+                                                        action: function (e, dt, node, config) {
+                                                            window.location.href = '{% url 'wdefinition_upload' %}';
                                                         }
                                                     },
                                                     {
