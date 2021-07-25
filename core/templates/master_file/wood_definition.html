@@ -56,7 +56,7 @@
 
 
                         <div class="tab-content">
-                            {#                            profile master#}
+                            {# profile master#}
                             <div class="tab-pane active pt-1" id="profilemaster" role="tabpanel">
                                 <table id="tbProfileMaster" class="table display table-hover table-striped">
                                     <thead class="thead-light">
@@ -158,13 +158,13 @@
                                                     {
                                                         text: 'Import from Excel',
                                                         action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'hc_list' %}';
+                                                            window.location.href = '{% url 'wdefinition_upload' %}';
                                                         }
                                                     },
                                                     {
                                                         text: 'Insert',
                                                         action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'hc_list' %}';
+                                                            window.location.href = '{% url 'wdefinition_upload' %}';
                                                         }
                                                     }
                                                 ],
@@ -290,7 +290,7 @@
                                                     {
                                                         text: 'Insert',
                                                         action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'hc_list' %}';
+                                                            window.location.href = '{% url 'wdefinition_upload' %}';
                                                         }
                                                     }
                                                 ],
@@ -326,7 +326,7 @@
                                             <td><a class="bolded" href="#">{{ item.feet }}</a></td>
                                             <td>{{ item.inch }}</td>
                                             <td>{{ item.mm }}</td>
-                                            <td>{{ item.freqUse }}</td>
+                                            <td>{{ item.freqUsed }}</td>
                                             <td><a class="btn btn-sm btn-outline-danger" href="#">Xóa</a></td>
                                         </tr>
                                     {% endfor %}
@@ -348,9 +348,10 @@
                                                     {
                                                         text: 'Insert',
                                                         action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'hc_list' %}';
+                                                            window.location.href = '{% url 'wdefinition_upload' %}';
                                                         }
-                                                    }
+                                                    },
+
                                                 ],
                                             });
 

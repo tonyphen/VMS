@@ -1,11 +1,11 @@
-from decimal import Decimal
+from django import forms
 from django.conf import settings
 from django.shortcuts import render, redirect
+from openpyxl import load_workbook
 from tablib import Dataset
-from django.http import HttpResponse
 
-from apps.master_file import models
-from apps.master_file import forms
+from apps.master_file import models, forms, resources
+
 
 def profile_master(request):
     qs = models.ProfileMaster.objects.all().order_by('group_id')
@@ -34,22 +34,25 @@ def wood_definition(request):
 
 def wdefinition_upload(request):
     if request.method == 'POST':
-        dataset = Dataset()
         file_name = request.FILES['fileName'].name
         upload_file = request.FILES['fileName']
-        imported_data = dataset.load(upload_file.read(), format='xlsx')
+        workbook = load_workbook(upload_file, read_only=True)
+        # Get name of the first sheet and open the sheet name
+        first_sheet = workbook.get_sheet_names()[0]
+        worksheet = workbook.get_sheet_by_name(first_sheet)
+        data = []
         if file_name == 'Length_Master.xlsx':
-            freqused = False
-            for data in imported_data:
-                if str(data[3]) == "True":
-                    freqused = True
+            for row in worksheet.iter_rows(min_row=2):
+                length = models.Length()
+                length.feet = round(row[0].value,4)
+                length.inch = round(row[1].value,2)
+                length.mm = int(row[2].value)
+                if row[3].value == 1:
+                    length.freqUsed = True
                 else:
-                    freqused = False
-                print(str(data[3]))
-                value = models.Length(
-                    round(float(data[0]), 2), round(float(data[1]), 2), int(data[2]), freqused
-                )
-                value.save()
+                    length.freqUsed = False
+                data.append(length)
+            models.Length.objects.bulk_create(data)
         return redirect('wood_definition')
 
     return render(request, 'master_file/master_file_upload.html')

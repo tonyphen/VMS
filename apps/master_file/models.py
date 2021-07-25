@@ -77,7 +77,7 @@ class Length(models.Model):
     feet = models.DecimalField(max_digits=8, decimal_places=4, verbose_name='Feet')
     inch = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True, verbose_name='Inch')
     mm = models.IntegerField(default=0,  blank=True, null=True, verbose_name='MM')
-    freqUsed = models.BooleanField(default=False,  blank=True, null=True, verbose_name='Freq. used')
+    freqUsed = models.BooleanField(blank=True, null=True, verbose_name='Freq. used')
 
     def save(self, *args, **kwargs):
         self.inch = self.feet*12
