@@ -1,3 +1,5 @@
+import decimal
+import string
 from django import forms
 from django.conf import settings
 from django.shortcuts import render, redirect
@@ -53,6 +55,61 @@ def wdefinition_upload(request):
                     length.freqUsed = False
                 data.append(length)
             models.Length.objects.bulk_create(data)
+
+        if file_name == 'profiles.xlsx':
+            for row in worksheet.iter_rows(min_row=2):
+                profile = models.Profile()
+                profile.group_master = models.ProfileMaster.objects.get(group_id=row[0].value)
+                profile.profile_group = row[1].value
+                profile.profile_group_description = str(row[2].value).upper()
+                profile.profile_id = str(row[3].value).upper()
+                profile.profile_sym = str(row[4].value).upper()
+                profile.description = str(row[5].value).upper()
+                profile.image = None
+                profile.width = round(float(row[6].value),2)
+                profile.thick = round(float(row[7].value),3)
+                profile.CBM_Feet = round(float(row[8].value),6)
+                profile.M2_Feet = round(float(row[9].value),6)
+                profile.bundle = int(row[10].value)
+                profile.save()
+            # models.Profile.objects.bulk_create(data)
+
+        if file_name == 'sortgroup.xlsx':
+            for row in worksheet.iter_rows(min_row=2):
+                sortgroup = models.SortGroup()
+                sortgroup.id = row[0].value
+                sortgroup.description = row[1].value
+                sortgroup.sym = str(row[2].value).upper()
+                sortgroup.parent = row[3].value
+                if row[4].value == 1:
+                    freqused = True
+                else:
+                    freqused = False
+
+                sortgroup.freqUse = freqused
+                sortgroup.save()
+
+        if file_name == 'WoodType.xlsx':
+            for row in worksheet.iter_rows(min_row=2):
+                wt = models.WoodType()
+                wt.wood_type_id = row[0].value
+                wt.description = str(row[1].value).upper()
+                wt.parent_id = row[2].value
+                if row[3].value == 1:
+                    freqused = True
+                else:
+                    freqused = False
+                wt.freqUsed = freqused
+                wt.wood_group = row[4].value
+                wt.prod_type = row[5].value
+                wt.sym = str(row[6].value).upper()
+                if row[7].value == 1:
+                    bodview = True
+                else:
+                    bodview = False
+                wt.bod_view = bodview
+                wt.save()
+
         return redirect('wood_definition')
 
     return render(request, 'master_file/master_file_upload.html')

@@ -58,7 +58,7 @@
                         <div class="tab-content">
                             {# profile master#}
                             <div class="tab-pane active pt-1" id="profilemaster" role="tabpanel">
-                                <table id="tbProfileMaster" class="table display table-hover table-striped">
+                                <table id="tbProfileMaster" class="dataTable display table-hover table-striped">
                                     <thead class="thead-light">
                                     <tr>
                                         <th>Master ID</th>
@@ -120,7 +120,7 @@
                                         <th>Group Master</th>
                                         <th>Profile ID</th>
                                         <th>Short Name</th>
-                                        <th>Description</th>
+                                        <th style="width: max-content">Description</th>
                                         <th>Images</th>
                                         <th>Width</th>
                                         <th>Thick</th>
@@ -136,8 +136,10 @@
                                             <td>{{ item.group_master }}</td>
                                             <td>{{ item.profile_id }}</td>
                                             <td><a class="bolded" href="#">{{ item.profile_sym }}</a></td>
-                                            <td>{{ item.description }}</td>
-                                            <td><img src="{{ item.image.url }}"></td>
+                                            <td style="width: max-content">{{ item.description }}</td>
+                                            <td>{% if item.image %}
+                                                <img src="{{ item.image.url }}">
+                                            {% endif %} </td>
                                             <td>{{ item.width }}</td>
                                             <td>{{ item.thick }}</td>
                                             <td>{{ item.CBM_Feet }}</td>
@@ -184,7 +186,7 @@
                             </div>
                             {# Wood Type #}
                             <div class="tab-pane pt-1" id="woodtype" role="tabpanel">
-                                <table id="tbWoodtype" class="table display table-hover table-striped">
+                                <table id="tbWoodtype" class="dataTable display table-hover table-striped">
                                     <thead class="thead-light">
                                     <tr>
                                         <th>ID</th>
@@ -224,13 +226,13 @@
                                                     {
                                                         text: 'Import from Excel',
                                                         action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'hc_list' %}';
+                                                            window.location.href = '{% url 'wdefinition_upload' %}';
                                                         }
                                                     },
                                                     {
                                                         text: 'Insert',
                                                         action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'hc_list' %}';
+                                                            window.location.href = '{% url 'wdefinition_upload' %}';
                                                         }
                                                     }
                                                 ],
@@ -250,7 +252,7 @@
                             </div>
                             {# Sort Group #}
                             <div class="tab-pane pt-1" id="sortgroup" role="tabpanel">
-                                <table id="tbsortgroup" class="table display table-hover table-striped">
+                                <table id="tbsortgroup" class="dataTable display table-hover table-striped">
                                     <thead class="thead-light">
                                     <tr>
                                         <th>ID</th>
@@ -310,7 +312,7 @@
                             </div>
                             {# Length #}
                             <div class="tab-pane pt-1" id="length" role="tabpanel">
-                                <table id="tblength" class="table display table-hover table-striped">
+                                <table id="tblength" class="dataTable display table-hover table-striped">
                                     <thead class="thead-light">
                                     <tr>
                                         <th>Feet</th>
@@ -362,14 +364,11 @@
                                                 // Toggle the visibility
                                                 column.visible(!column.visible());
                                             });
-
                                         });
                                     </script>
                                 </table>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

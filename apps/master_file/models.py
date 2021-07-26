@@ -1,6 +1,7 @@
-from decimal import Decimal
+from decimal import Decimal, getcontext
 from django.db import models
 
+from apps.basic import utilities
 mm_ft = 304.8
 cm_inch = 0.39370079
 
@@ -15,25 +16,30 @@ class ProfileMaster(models.Model):
 
 
 class Profile(models.Model):
-    group_master = models.ForeignKey(ProfileMaster, related_name='group_master', on_delete=models.CASCADE)
+    group_master = models.ForeignKey(ProfileMaster, related_name='group_master', verbose_name='Gourp master', on_delete=models.DO_NOTHING)
     profile_group = models.CharField(max_length=100, verbose_name='Profile Group', blank=True, null=True)
+    profile_group_description = models.CharField(max_length=200, verbose_name='Group description')
     profile_id = models.CharField(max_length=5, verbose_name='Profile ID', primary_key=True)
     profile_sym = models.CharField(max_length=50, verbose_name='Sym', blank=True, null=True)
     description = models.CharField(max_length=255, verbose_name='Description')
-    image = models.ImageField(upload_to='upload/images/master_file',blank=True, null=True, verbose_name='Image')
-    width = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Width(mm)', default=0.0)
-    thick = models.DecimalField(max_digits=5, decimal_places=3, verbose_name='Thick(mm)',default=0.0)
-    CBM_Feet = models.DecimalField(max_digits=18, decimal_places=9, default=0.0, verbose_name='CBM/Feet')
-    M2_Feet = models.DecimalField(max_digits=18, decimal_places=9, default=0.0, verbose_name='M2/Feet')
+    image = models.ImageField(upload_to='upload/images/master_file', blank=True, null=True, verbose_name='Image')
+    width = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Width(mm)', default=0.0)
+    thick = models.DecimalField(max_digits=10, decimal_places=3, verbose_name='Thick(mm)', default=0.0)
+    CBM_Feet = models.DecimalField(max_digits=18, decimal_places=6, verbose_name='CBM/Feet')
+    M2_Feet = models.DecimalField(max_digits=18, decimal_places=6, verbose_name='M2/Feet')
     bundle = models.IntegerField(verbose_name='Pcs/Bundle', default=0)
 
     def __str__(self):
         return self.profile_sym
 
     def save(self, *args, **kwargs):
+        # self.profile_id = str(self.profile_id).upper()
+        # self.profile_group_description = str(self.profile_group_description).upper()
+        # self.profile_sym = str(self.profile_sym).upper()
         if self.width > 0 and self.thick > 0:
-            self.CBM_Feet = (self.width * self.thick * mm_ft)/10**-9
-            self.M2_Feet = (self.width * self.thick * mm_ft)/10**-6
+            getcontext().prec = 6
+            self.CBM_Feet = Decimal(self.width * self.thick * mm_ft)*Decimal(10**-9)
+            self.M2_Feet = Decimal(self.width + (self.thick*2) * mm_ft)*Decimal(10**-6)
         super(Profile, self).save(*args, **kwargs)
 
 
@@ -53,9 +59,9 @@ class WoodType(models.Model):
     sym = models.CharField(max_length=5, blank=True, null=True, verbose_name='Sym')
     description = models.CharField(max_length=200, verbose_name='Name')
     parent_id = models.CharField(max_length=3, blank=True, null=True, default='', verbose_name='Main group')
-    freqUse = models.BooleanField(default=True, blank=True, null=True)
-    wood_group = models.CharField(max_length=20, choices=CHOICES_WG, blank=True, null=True, verbose_name='WG Type')
-    type = models.CharField(max_length=10, choices=CHOICES_TYPE, blank=True, null=True, verbose_name='Prod Type')
+    freqUsed = models.BooleanField(default=True, blank=True, null=True)
+    wood_group = models.CharField(max_length=50, choices=CHOICES_WG, blank=True, null=True, verbose_name='WG Type')
+    prod_type = models.CharField(max_length=20, choices=CHOICES_TYPE, blank=True, null=True, verbose_name='Prod Type')
     bod_view = models.BooleanField(default=False, blank=True, null=True, verbose_name='Shown')
 
     def __str__(self):
@@ -65,8 +71,8 @@ class WoodType(models.Model):
 class SortGroup(models.Model):
     id = models.CharField(max_length=3, primary_key=True, verbose_name='ID')
     description = models.CharField(max_length=200, verbose_name='Description')
-    sym = models.CharField(max_length=5, blank=True, null=True, verbose_name='Sym')
-    parent = models.CharField(max_length=5, blank=True, null=True, verbose_name='Parent')
+    sym = models.CharField(max_length=20, blank=True, null=True, verbose_name='Sym')
+    parent = models.CharField(max_length=50, blank=True, null=True, verbose_name='Parent')
     freqUse = models.BooleanField(blank=True, null=True,verbose_name='Freq Used')
 
     def __str__(self):
@@ -100,4 +106,5 @@ class Thick(models.Model):
 
     def __str__(self):
         return str(self.thick)
+
 

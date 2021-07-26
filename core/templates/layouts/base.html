@@ -22,9 +22,11 @@
     {% block stylesheets %}
 
     {% endblock stylesheets %}
+{% include 'includes/scripts.html' %}
     {{ form.media }}
-    {% load bootstrap4 %}
-    {% bootstrap_javascript jquery='full' %}
+{#    {% load bootstrap4 %}#}
+{#    {% bootstrap_javascript jquery='full' %}#}
+
 </head>
 <body class="c-app">
 
@@ -54,11 +56,11 @@
 
 </div>
 
-{% include 'includes/scripts.html' %}
+
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
-    <script src="{% static 'assets/js/jquery-3.5.1.js' %}"></script>
+
     <script src="{% static 'assets/js/charts.js' %}"></script>
     <script src="{% static 'assets/js/vmschart.js' %}"></script>
 {% endblock javascripts %}

@@ -2017,199 +2017,204 @@ model</ColNames>
       <DataType>decimal|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="644" parent="184" name="M2_Feet">
+    <column id="644" parent="184" name="bundle">
       <Position>8</Position>
-      <DataType>decimal|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="645" parent="184" name="bundle">
-      <Position>9</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="646" parent="184" name="group_master_id">
-      <Position>10</Position>
+    <column id="645" parent="184" name="group_master_id">
+      <Position>9</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="647" parent="184" name="profile_group">
-      <Position>11</Position>
+    <column id="646" parent="184" name="profile_group">
+      <Position>10</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <index id="648" parent="184" name="sqlite_autoindex_master_file_profile_1">
+    <column id="647" parent="184" name="profile_group_description">
+      <Position>11</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="648" parent="184" name="M2_Feet">
+      <Position>12</Position>
+      <DataType>decimal|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="649" parent="184" name="sqlite_autoindex_master_file_profile_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>profile_id</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="649" parent="184" name="master_file_profile_group_master_id_c0a44ea8">
+    <index id="650" parent="184" name="master_file_profile_group_master_id_c0a44ea8">
       <ColNames>group_master_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="650" parent="184">
+    <key id="651" parent="184">
       <ColNames>profile_id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_master_file_profile_1</UnderlyingIndexName>
     </key>
-    <foreign-key id="651" parent="184">
+    <foreign-key id="652" parent="184">
       <ColNames>group_master_id</ColNames>
       <RefTableName>master_file_profilemaster</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="652" parent="185" name="id">
+    <column id="653" parent="185" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="653" parent="185" name="group_id">
+    <column id="654" parent="185" name="group_id">
       <Position>2</Position>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="654" parent="185" name="group_name">
+    <column id="655" parent="185" name="group_name">
       <Position>3</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="655" parent="185" name="sales_target">
+    <column id="656" parent="185" name="sales_target">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="656" parent="185">
+    <key id="657" parent="185">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="657" parent="186" name="id">
+    <column id="658" parent="186" name="id">
       <Position>1</Position>
       <DataType>varchar(3)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="658" parent="186" name="description">
+    <column id="659" parent="186" name="description">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="659" parent="186" name="sym">
+    <column id="660" parent="186" name="sym">
       <Position>3</Position>
       <DataType>varchar(5)|0s</DataType>
     </column>
-    <column id="660" parent="186" name="parent">
+    <column id="661" parent="186" name="parent">
       <Position>4</Position>
       <DataType>varchar(5)|0s</DataType>
     </column>
-    <column id="661" parent="186" name="freqUse">
+    <column id="662" parent="186" name="freqUse">
       <Position>5</Position>
       <DataType>bool|0s</DataType>
     </column>
-    <index id="662" parent="186" name="sqlite_autoindex_master_file_sortgroup_1">
+    <index id="663" parent="186" name="sqlite_autoindex_master_file_sortgroup_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="663" parent="186">
+    <key id="664" parent="186">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_master_file_sortgroup_1</UnderlyingIndexName>
     </key>
-    <column id="664" parent="187" name="id">
+    <column id="665" parent="187" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="665" parent="187" name="thick">
+    <column id="666" parent="187" name="thick">
       <Position>2</Position>
       <DataType>decimal|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="666" parent="187" name="mm">
+    <column id="667" parent="187" name="mm">
       <Position>3</Position>
       <DataType>decimal|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="667" parent="187" name="inch">
+    <column id="668" parent="187" name="inch">
       <Position>4</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="668" parent="187">
+    <key id="669" parent="187">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="669" parent="188" name="wood_type_id">
+    <column id="670" parent="188" name="wood_type_id">
       <Position>1</Position>
       <DataType>varchar(3)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="670" parent="188" name="sym">
+    <column id="671" parent="188" name="sym">
       <Position>2</Position>
       <DataType>varchar(5)|0s</DataType>
     </column>
-    <column id="671" parent="188" name="description">
+    <column id="672" parent="188" name="description">
       <Position>3</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="672" parent="188" name="parent_id">
+    <column id="673" parent="188" name="parent_id">
       <Position>4</Position>
       <DataType>varchar(3)|0s</DataType>
     </column>
-    <column id="673" parent="188" name="wood_group">
+    <column id="674" parent="188" name="wood_group">
       <Position>5</Position>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <column id="674" parent="188" name="type">
+    <column id="675" parent="188" name="type">
       <Position>6</Position>
       <DataType>varchar(10)|0s</DataType>
     </column>
-    <column id="675" parent="188" name="bod_view">
+    <column id="676" parent="188" name="bod_view">
       <Position>7</Position>
       <DataType>bool|0s</DataType>
     </column>
-    <column id="676" parent="188" name="freqUse">
+    <column id="677" parent="188" name="freqUse">
       <Position>8</Position>
       <DataType>bool|0s</DataType>
     </column>
-    <index id="677" parent="188" name="sqlite_autoindex_master_file_woodtype_1">
+    <index id="678" parent="188" name="sqlite_autoindex_master_file_woodtype_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>wood_type_id</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="678" parent="188">
+    <key id="679" parent="188">
       <ColNames>wood_type_id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_master_file_woodtype_1</UnderlyingIndexName>
     </key>
-    <column id="679" parent="189" name="type">
+    <column id="680" parent="189" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="680" parent="189" name="name">
+    <column id="681" parent="189" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="681" parent="189" name="tbl_name">
+    <column id="682" parent="189" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="682" parent="189" name="rootpage">
+    <column id="683" parent="189" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="683" parent="189" name="sql">
+    <column id="684" parent="189" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="684" parent="190" name="name">
+    <column id="685" parent="190" name="name">
       <Position>1</Position>
     </column>
-    <column id="685" parent="190" name="seq">
+    <column id="686" parent="190" name="seq">
       <Position>2</Position>
     </column>
   </database-model>

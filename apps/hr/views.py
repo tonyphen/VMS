@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRe
 from django.conf import settings
 from tablib import Dataset
 
-from apps.basic.utilities import created_updated, HealthCheckItemResource
+from apps.basic.utilities import created_updated
 from apps.hr import models, forms
 
 
