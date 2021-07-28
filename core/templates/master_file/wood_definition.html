@@ -71,9 +71,9 @@
                                     {% for item in profile_master_list %}
                                         <tr>
                                             <td>{{ item.group_id }}</td>
-                                            <td><a class="bolded" href="#">{{ item.group_name }}</a></td>
+                                            <td><a class="bolded" href="{% url 'profile_master_update' item.pk %}">{{ item.group_name }}</a></td>
                                             <td>{{ item.sales_target|intcomma }}</td>
-                                            <td><a class="btn btn-sm btn-outline-danger" href="#">Xóa</a></td>
+                                            <td><a class="btn btn-sm btn-outline-danger" href="{% url 'profile_master_delete' item.id %}">Xóa</a></td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
@@ -94,7 +94,7 @@
                                                     {
                                                         text: 'Insert',
                                                         action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'hc_list' %}';
+                                                            window.location.href = '{% url 'profile_master_create' %}';
                                                         }
                                                     }
                                                 ],
@@ -375,5 +375,4 @@
         </div>
     </main>
 {% endblock %}
-
 

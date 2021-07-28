@@ -12,7 +12,6 @@ def created_updated(model, request):
     obj.updated_by = request.user
     obj.save()
 
-
 def format_number(value, max_digits, decimal_places):
     """
     Formats a number into a string with the requisite number of digits and
