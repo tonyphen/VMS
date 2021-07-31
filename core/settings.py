@@ -35,10 +35,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     'bootstrap4',
     'bootstrap_datepicker_plus',
-
-    'apps.basic',  # Enable the inner basic
+    # The inner apps
+    'apps.basic',
     'apps.hr',
     'apps.master_file',
+    'apps.inventory',
+
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
@@ -86,7 +88,7 @@ DATABASES = {
         'NAME': 'vms_v5',
         'USER': 'sa',
         'PASSWORD': 'Vinaw00d',
-        'HOST': '192.168.2.5',
+        'HOST': '14.161.1.70',
         'PORT': '1433',
 
         'OPTIONS': {

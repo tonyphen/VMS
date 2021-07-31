@@ -1,10 +1,10 @@
 {% extends "layouts/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %} Health Check {% endblock %}
+{% block title %} {{ form_name }} {% endblock %}
 {% block breadcrumb %}
-    <li class="breadcrumb-item"><a href="{% url 'wood_definition' %}">Health Check</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Profile Master</li>
+    <li class="breadcrumb-item"><a href="{{ parent_link }}">{{ parent_name }}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ form_name }}</li>
 {% endblock %}
 {% block content %}
     <main class="c-main">
@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card">
-                            <div class="card-header text-uppercase"><strong>Profile Master</strong></div>
+                            <div class="card-header text-uppercase"><strong>{{ form_name }}</strong></div>
                             <div class="card-body">
                                 <form method="post">
                                   {% csrf_token %}
@@ -23,8 +23,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
 {% endblock %}
+

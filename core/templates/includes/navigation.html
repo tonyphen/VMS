@@ -83,8 +83,27 @@
                   <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-library"></use>
                 </svg> Document library
                 </a>
-                <a class="dropdown-item" href="#"></a>
+            </div>
+          </li>
 
+{#            Master files #}
+            <li class="c-header-nav-item px-3 dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-book"></use>
+                </svg>Master Files
+            </a>
+            <div class="dropdown-menu dropdown-menu-left pt-0">
+              <a class="dropdown-item" href="{% url 'wood_definition' %}">
+                <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-braille"></use>
+                </svg> Wood Definitions
+                </a>
+
+                <a class="dropdown-item" href="{% url 'size' %}">
+                <svg class="c-icon mr-2">
+                  <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-library"></use>
+                </svg> Size Master file
+                </a>
             </div>
           </li>
 

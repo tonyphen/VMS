@@ -1,9 +1,9 @@
 {% extends "layouts/base.html" %}
 {% load static %}
 {% load humanize %}
-{% block title %} Profile Master {% endblock %}
+{% block title %} Size Master {% endblock %}
 {% block breadcrumb %}
-    <li class="breadcrumb-item active" aria-current="page">WOOD DEFINITIONS</li>
+    <li class="breadcrumb-item active" aria-current="page">SIZE DEFINITIONS</li>
 {% endblock %}
 {% block stylesheets %}
     {% include 'includes/dataTables_css.html' %}
@@ -20,59 +20,141 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#profilemaster"
-                                                    role="tab" aria-controls="profilemaster">
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#length"
+                                                    role="tab" aria-controls="length">
                                 <svg class="c-icon">
                                     <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-calculator"></use>
                                 </svg>
-                                Profile master</a>
+                                Length</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" role="tab"
-                                                    aria-controls="profile">
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#thick" role="tab"
+                                                    aria-controls="thick">
                                 <svg class="c-icon">
                                     <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-basket"></use>
                                 </svg>
-                                Profiles</a>
+                                Thick</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#woodtype" role="tab"
-                                                    aria-controls="woodtype">
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#logscale" role="tab"
+                                                    aria-controls="logscale">
                                 <svg class="c-icon">
                                     <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-chart-pie"></use>
                                 </svg>
-                                WoodType</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#sortgroup" role="tab"
-                                                    aria-controls="sortgroup">
-                                <svg class="c-icon">
-                                    <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-chart-pie"></use>
-                                </svg>
-                                Sort Group</a></li>
+                                Log Scale</a></li>
                         </ul>
 
 
                         <div class="tab-content">
-                            {# profile master#}
-                            <div class="tab-pane active pt-1" id="profilemaster" role="tabpanel">
-                                <table id="tbProfileMaster" class="dataTable display table-hover table-striped">
+                            {# Length #}
+                            <div class="tab-pane active pt-1" id="length" role="tabpanel">
+                                <table id="tblength" class="dataTable display table-hover table-striped">
                                     <thead class="thead-light">
                                     <tr>
-                                        <th>Master ID</th>
-                                        <th>Master Group Name</th>
-                                        <th>Sales Target</th>
+                                        <th>MM</th>
+                                        <th>Feet</th>
+                                        <th>Inch</th>
+                                        <th>Freq Used</th>
                                         <th>Xóa</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {% for item in profile_master_list %}
+                                    {% for item in length_list %}
                                         <tr>
-                                            <td>{{ item.group_id }}</td>
-                                            <td><a class="bolded"
-                                                   href="{% url 'profile_master_update' item.group_id %}">{{ item.group_name }}</a>
-                                            </td>
-                                            <td>{{ item.sales_target|intcomma }}</td>
+                                            <td><a class="bolded" href="{% url 'length_update' item.mm %}">{{ item.mm }}</a></td>
+                                            <td>{{ item.feet }}</td>
+                                            <td>{{ item.inch }}</td>
+                                            <td>{{ item.freqUsed }}</td>
                                             <td>
-                                                <button class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#pm{{ item.group_id }}">Xóa</button>
+                                                <button class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#length{{ item.mm}}">Xóa</button>
 
-                                                <div class="modal fade" id="pm{{ item.group_id }}" tabindex="-1"
+                                                <div class="modal fade" id="length{{ item.mm }}" tabindex="-1" role="dialog" aria-labelledby="length" aria-hidden="false">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title justify-content-center">Delete confirmation</h4>
+                                                                <button class="close" type="button" data-dismiss="modal"
+                                                                        aria-label="Close"><span
+                                                                        aria-hidden="true">×</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="{% url 'length_delete' item.mm %}"
+                                                                      method="POST">
+                                                                    {% csrf_token %}
+                                                                    <div class="row justify-content-center"><strong>Are you sure to delete length {{ item }}mm?</strong></div>
+                                                                    <div class="divider pb-3">
+                                                                    </div>
+                                                                    <div class="row justify-content-center">
+                                                                        <input class="btn btn-warning pr-3" style="width: 25%" type="submit" value="Yes"/>
+                                                                        <button class="btn btn-secondary pl-3" style="width: 25%" type="button" data-dismiss="modal"> Cancel </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer justify-content-center">
+                                                                   <small class="text-danger">Warning: your are permanently deleting data from the database.</small>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content-->
+                                                    </div>
+                                                    <!-- /.modal-dialog-->
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    <script>
+                                        $(document).ready(function () {
+                                            var table = $('#tblength').DataTable({
+                                                "pageLength": {{ pageLength }},
+                                                select: true,
+                                                dom: 'Bfrtip',
+                                                buttons: [
+                                                    'copy', 'excel', 'pdf', 'print',
+                                                    {
+                                                        text: 'Import from Excel',
+                                                        action: function (e, dt, node, config) {
+                                                            window.location.href = '{% url 'master_file_upload' %}';
+                                                        }
+                                                    },
+                                                    {
+                                                        text: 'Insert',
+                                                        action: function (e, dt, node, config) {
+                                                            window.location.href = '{% url 'length_create' %}';
+                                                        }
+                                                    },
+                                                ],
+                                            });
+
+                                            $('a.toggle-vis').on('click', function (e) {
+                                                e.preventDefault();
+                                                // Get the column API object
+                                                var column = table.column($(this).attr('data-column'));
+                                                // Toggle the visibility
+                                                column.visible(!column.visible());
+                                            });
+                                        });
+                                    </script>
+                                </table>
+                            </div>
+                            {# Thick #}
+                            <div class="tab-pane pt-1" id="thick" role="tabpanel">
+                                <table id="tbThick" class="dataTable display table-hover table-striped">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>MM</th>
+                                        <th>CM</th>
+                                        <th>Inch</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in thick_list %}
+                                        <tr>
+                                            <td><a class="bolded" href="{% url 'thick_update' item.mm %}">{{ item.mm }}</a></td>
+                                            <td>{{ item.cm }}</td>
+                                            <td>{{ item.inch }}</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#a{{ item.mm }}">Xóa</button>
+
+                                                <div class="modal fade" id="a{{ item.mm }}" tabindex="-1"
                                                      role="dialog" aria-labelledby="profile_master" aria-hidden="false">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
@@ -83,10 +165,10 @@
                                                                         aria-hidden="true">×</span></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{% url 'profile_master_delete' item.group_id %}"
+                                                                <form action="{% url 'thick_delete' item.mm %}"
                                                                       method="POST">
                                                                     {% csrf_token %}
-                                                                    <div class="row justify-content-center"><strong>Are you sure to delete "{{ item }}" ?</strong></div>
+                                                                    <div class="row justify-content-center"><strong>Are you sure to delete Thick: "{{ item }}"mm?</strong></div>
                                                                     <div class="divider pb-3">
                                                                     </div>
                                                                     <div class="row justify-content-center">
@@ -113,7 +195,7 @@
                                     </tbody>
                                     <script>
                                         $(document).ready(function () {
-                                            var table = $('#tbProfileMaster').DataTable({
+                                            var table = $('#tbThick').DataTable({
                                                 "pageLength": {{ pageLength }},
                                                 select: true,
                                                 dom: 'Bfrtip',
@@ -128,7 +210,7 @@
                                                     {
                                                         text: 'Insert',
                                                         action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'profile_master_create' %}';
+                                                            window.location.href = '{% url 'thick_create' %}';
                                                         }
                                                     }
                                                 ],
@@ -146,46 +228,28 @@
                                     </script>
                                 </table>
                             </div>
-                            {# profiles #}
-                            <div class="tab-pane pt-1" id="profile" role="tabpanel">
-                                <table id="tbProfile" class="table display table-hover table-striped">
+                            {# logscale #}
+                            <div class="tab-pane pt-1" id="logscale" role="tabpanel">
+                                <table id="tbLogScale" class="dataTable display table-hover table-striped">
                                     <thead class="thead-light">
                                     <tr>
-                                        <th>Group Master</th>
-                                        <th>Profile ID</th>
-                                        <th>Short Name</th>
-                                        <th style="width: max-content">Description</th>
-                                        <th>Images</th>
-                                        <th>Width</th>
-                                        <th>Thick</th>
-                                        <th>CBM/Feet</th>
-                                        <th>M2/Feet</th>
-                                        <th>Bundle</th>
+                                        <th>Diameter</th>
+                                        <th>Length</th>
+                                        <th>Board Feet</th>
                                         <th>Xóa</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {% for item in profile_list %}
+                                        {% for item in log_scale_list %}
                                         <tr>
                                             <td>
-                                                <a href="{% url 'profile_master_update' item.group_master_id %}">{{ item.group_master }}</a>
+                                                <a class="bolded" href="{% url 'log_scale_update' item.id %}">{{ item.dia }}</a>
                                             </td>
-                                            <td>{{ item.profile_id }}</td>
-                                            <td><a class="bolded"
-                                                   href="{% url 'profile_update' item.profile_id %}">{{ item.profile_sym }}</a>
-                                            </td>
-                                            <td style="width: max-content">{{ item.description }}</td>
-                                            <td>{% if item.image %}
-                                                <img src="{{ item.image.url }}">
-                                            {% endif %} </td>
-                                            <td>{{ item.width }}</td>
-                                            <td>{{ item.thick }}</td>
-                                            <td>{{ item.CBM_Feet }}</td>
-                                            <td>{{ item.M2_Feet }}</td>
-                                            <td>{{ item.bundle|intcomma }}</td>
+                                            <td>{{ item.length }}</td>
+                                            <td>{{ item.BF }}</td>
                                             <td>
-                                                <button class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#pf{{ item.profile_id }}">Xóa</button>
-                                                <div class="modal fade" id="pf{{ item.profile_id }}" tabindex="-1" role="dialog" aria-labelledby="profile" aria-hidden="false">
+                                                <button class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#ls{{ item.id }}">Xóa</button>
+                                                <div class="modal fade" id="ls{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="profile" aria-hidden="false">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -195,7 +259,7 @@
                                                                         aria-hidden="true">×</span></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{% url 'profile_delete' item.profile_id %}"
+                                                                <form action="{% url 'log_scale_delete' item.id %}"
                                                                       method="POST">
                                                                     {% csrf_token %}
                                                                     <div class="row justify-content-center"><strong>Are you sure to delete "{{ item }}" ?</strong></div>
@@ -216,13 +280,12 @@
                                                     <!-- /.modal-dialog-->
                                                 </div>
                                             </td>
-
                                         </tr>
                                     {% endfor %}
                                     </tbody>
                                     <script>
                                         $(document).ready(function () {
-                                            var table = $('#tbProfile').DataTable({
+                                            var table = $('#tbLogScale').DataTable({
                                                 "pageLength": {{ pageLength }},
                                                 select: true,
                                                 dom: 'Bfrtip',
@@ -237,200 +300,7 @@
                                                     {
                                                         text: 'Insert',
                                                         action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'profile_create' %}';
-                                                        }
-                                                    }
-                                                ],
-                                            });
-
-                                            $('a.toggle-vis').on('click', function (e) {
-                                                e.preventDefault();
-                                                // Get the column API object
-                                                var column = table.column($(this).attr('data-column'));
-                                                // Toggle the visibility
-                                                column.visible(!column.visible());
-                                            });
-
-                                        });
-                                    </script>
-                                </table>
-                            </div>
-                            {# Wood Type #}
-                            <div class="tab-pane pt-1" id="woodtype" role="tabpanel">
-                                <table id="tbWoodtype" class="dataTable display table-hover table-striped">
-                                    <thead class="thead-light">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Short Name</th>
-                                        <th>Description</th>
-                                        <th>Parent</th>
-                                        <th>Wood Group</th>
-                                        <th>Prod Type</th>
-                                        <th>Freq Used</th>
-                                        <th>Reported</th>
-                                        <th>Xóa</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for item in wood_type_list %}
-                                        <tr>
-                                            <td>{{ item.wood_type_id }}</td>
-                                            <td>{{ item.sym }}</td>
-                                            <td><a class="bolded" href="{% url 'wood_type_update' item.wood_type_id%}">{{ item.description }}</a></td>
-                                            <td>{{ item.parent_id }}</td>
-                                            <td>{{ item.wood_group }}</td>
-                                            <td>{{ item.prod_type }}</td>
-                                            <td>{{ item.freqUse }}</td>
-                                            <td>{{ item.bod_view }}</td>
-                                            <td>
-                                                <button class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#wt{{ item.wood_type_id }}">Xóa</button>
-                                                <div class="modal fade" id="wt{{ item.wood_type_id }}" tabindex="-1" role="dialog" aria-labelledby="wood_type" aria-hidden="false">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title justify-content-center">Delete confirmation</h4>
-                                                                <button class="close" type="button" data-dismiss="modal"
-                                                                        aria-label="Close"><span
-                                                                        aria-hidden="true">×</span></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form action="{% url 'wood_type_delete' item.wood_type_id %}"
-                                                                      method="POST">
-                                                                    {% csrf_token %}
-                                                                    <div class="row justify-content-center"><strong>Are you sure to delete "{{ item }}" ?</strong></div>
-                                                                    <div class="divider pb-3">
-                                                                    </div>
-                                                                    <div class="row justify-content-center">
-                                                                        <input class="btn btn-warning pr-3" style="width: 25%" type="submit" value="Yes"/>
-                                                                        <button class="btn btn-secondary pl-3" style="width: 25%" type="button" data-dismiss="modal"> Cancel </button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="modal-footer justify-content-center">
-                                                                   <small class="text-danger">Warning: your are deleting data from the database.</small>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.modal-content-->
-                                                    </div>
-                                                    <!-- /.modal-dialog-->
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                    <script>
-                                        $(document).ready(function () {
-                                            var table = $('#tbWoodtype').DataTable({
-                                                "pageLength": {{ pageLength }},
-                                                select: true,
-                                                dom: 'Bfrtip',
-                                                buttons: [
-                                                    'copy', 'excel', 'pdf', 'print',
-                                                    {
-                                                        text: 'Import from Excel',
-                                                        action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'master_file_upload' %}';
-                                                        }
-                                                    },
-                                                    {
-                                                        text: 'Insert',
-                                                        action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'wood_type_create' %}';
-                                                        }
-                                                    }
-                                                ],
-                                            });
-
-                                            $('a.toggle-vis').on('click', function (e) {
-                                                e.preventDefault();
-                                                // Get the column API object
-                                                var column = table.column($(this).attr('data-column'));
-                                                // Toggle the visibility
-                                                column.visible(!column.visible());
-                                            });
-
-                                        });
-                                    </script>
-                                </table>
-                            </div>
-                            {# Sort Group #}
-                            <div class="tab-pane pt-1" id="sortgroup" role="tabpanel">
-                                <table id="tbsortgroup" class="dataTable display table-hover table-striped">
-                                    <thead class="thead-light">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Description</th>
-                                        <th>Short name</th>
-                                        <th>Parent</th>
-                                        <th>Freq Used</th>
-                                        <th>Xóa</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for item in soft_group_list %}
-                                        <tr>
-                                            <td>{{ item.id }}</td>
-                                            <td><a class="bolded" href="{% url 'sort_group_update'  item.id %}">{{ item.description }}</a></td>
-                                            <td>{{ item.sym }}</td>
-                                            <td>{{ item.parent }}</td>
-                                            <td>{{ item.freqUse }}</td>
-                                            <td>
-{#                                                <a class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#{{ item.id }}"#}
-{#                                                    href="{% url 'sort_group_delete' item.id %}">Xóa</a>#}
-                                                <button class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#sg{{ item.id }}">Xóa</button>
-
-                                            </td>
-                                            <div class="modal fade" id="sg{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="sort_group" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title justify-content-center">Delete confirmation</h4>
-                                                                <button class="close" type="button" data-dismiss="modal"
-                                                                        aria-label="Close"><span
-                                                                        aria-hidden="true">×</span></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form action="{% url 'sort_group_delete' item.id %}"
-                                                                      method="POST">
-                                                                    {% csrf_token %}
-                                                                    <div class="row justify-content-center"><strong>Are you sure to delete "{{ item }}" ?</strong></div>
-                                                                    <div class="divider pb-3">
-                                                                    </div>
-                                                                    <div class="row justify-content-center">
-                                                                        <input class="btn btn-warning pr-3" style="width: 25%" type="submit" value="Yes"/>
-                                                                        <button class="btn btn-secondary pl-3" style="width: 25%" type="button" data-dismiss="modal"> Cancel </button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="modal-footer justify-content-center">
-                                                                   <small class="text-danger">Warning: your are deleting data from the database.</small>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.modal-content-->
-                                                    </div>
-                                                    <!-- /.modal-dialog-->
-                                                </div>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                    <script>
-                                        $(document).ready(function () {
-                                            var table = $('#tbsortgroup').DataTable({
-                                                "pageLength": {{ pageLength }},
-                                                select: true,
-                                                dom: 'Bfrtip',
-                                                buttons: [
-                                                    'copy', 'excel', 'pdf', 'print',
-                                                    {
-                                                        text: 'Import from Excel',
-                                                        action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'master_file_upload' %}';
-                                                        }
-                                                    },
-                                                    {
-                                                        text: 'Insert',
-                                                        action: function (e, dt, node, config) {
-                                                            window.location.href = '{% url 'sort_group_create' %}';
+                                                            window.location.href = '{% url 'log_scale_create' %}';
                                                         }
                                                     }
                                                 ],

@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://14.161.1.70:5455/vms</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="vms_v5@14.161.1.70" uuid="dfa5208a-30ba-422a-921a-6f49d4b38597">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://14.161.1.70:1433;database=vms_v5</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

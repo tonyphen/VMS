@@ -5,30 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a46c8cff-10fc-49df-80ea-5906c30f7913" name="Default Changelist" comment="commit">
-      <change afterPath="$PROJECT_DIR$/core/templates/master_file/profile_master_update.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/master_file/wood_definition_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/basic/dictionary.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/hr/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/inventory/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/inventory/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/inventory/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/inventory/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/inventory/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/inventory/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/inventory/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/inventory/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0002_auto_20210729_1755.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0003_auto_20210730_2005.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0004_auto_20210730_2107.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0005_alter_thick_inch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0006_alter_thick_mm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0007_product_warehouse.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0008_auto_20210730_2231.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0009_auto_20210730_2243.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0010_auto_20210730_2253.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0011_warehouse_type.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0012_auto_20210731_0710.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/bak/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/bak/0002_alter_profilemaster_group_id.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/bak/0003_alter_profilemaster_group_id.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/bak/0004_auto_20210728_1642.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/layouts/list_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/layouts/single_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/master_file/size.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/665a8e2a-96f9-49f2-854e-2ce93d37be6d.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/basic/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/basic/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/basic/utilities.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/hr/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/migrations/0002_alter_sortgroup_sym.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/migrations/0003_alter_sortgroup_parent.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/migrations/0004_auto_20210726_2225.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/migrations/0005_auto_20210726_2230.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/migrations/0006_alter_woodtype_parent_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/migrations/0007_alter_woodtype_parent_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/sales/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/hr/hc_items.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/hr/hc_items.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/includes/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/navigation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/includes/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/master_file/profile_master.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/master_file/profile_master_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/master_file/master_file_upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/master_file/master_file_upload.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/master_file/profile_master_form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/master_file/profile_master_update.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/master_file/wood_definition.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/master_file/wood_definition.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/master_file/wood_definition_delete.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,13 +115,13 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ChangesTree.GroupingKeys" value="directory" />
-    <property name="DatabaseDriversLRU" value="postgresql&#10;sqlite" />
+    <property name="DatabaseDriversLRU" value="postgresql&#10;sqlite&#10;sqlserver" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/apps/master_file/migrations" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/templates/master_file" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -108,11 +135,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\core\templates\master_file" />
+      <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\master_file" />
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\master_file\migrations" />
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\basic\migrations" />
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\hr\migrations" />
-      <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\sales\migrations" />
-      <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\core\templates\master_file" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\core\static\assets\vendors\datatables\bak" />
@@ -149,7 +176,9 @@
       <workItem from="1626782819018" duration="27557000" />
       <workItem from="1626914750346" duration="72239000" />
       <workItem from="1627101144940" duration="38021000" />
-      <workItem from="1627271152885" duration="51713000" />
+      <workItem from="1627271152885" duration="52218000" />
+      <workItem from="1627442514087" duration="164000" />
+      <workItem from="1627442798293" duration="76066000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1626600394264</created>
@@ -249,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627315783962</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="commit">
+      <created>1627442239126</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1627442239126</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

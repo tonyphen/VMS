@@ -1,16 +1,28 @@
 import decimal
 from django.db import models
-from import_export import resources
-
-from apps.hr.models import HealthCheckItem
 
 
-def created_updated(model, request):
-    obj = model.objects.latest('pk')
-    if obj.created_by is None:
-        obj.created_by = request.user
-    obj.updated_by = request.user
-    obj.save()
+# class UpperCaseCharField(models.CharField):
+#
+#     def __init__(self, *args, **kwargs):
+#         super(UpperCaseCharField, self).__init__(*args, **kwargs)
+#
+#     def pre_save(self, model_instance, add):
+#         value = getattr(model_instance, self.attname, None)
+#         if value:
+#             value = value.upper()
+#             setattr(model_instance, self.attname, value)
+#             return value
+#         else:
+#             return super(UpperCaseCharField, self).pre_save(model_instance, add)
+
+
+def created_updated(form, request):
+    if form.instance.created_by is None:
+        form.instance.created_by = request.user
+    form.instance.updated_by = request.user
+    return
+
 
 def format_number(value, max_digits, decimal_places):
     """

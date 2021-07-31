@@ -10,7 +10,6 @@
     {% include 'includes/dataTables_scripts.html' %}
 {% endblock %}
 
-
 {% block breadcrumb %}
     <li class="breadcrumb-item" aria-current="page"><a href="{% url 'hc_list' %}">Health Check</a></li>
     <li class="breadcrumb-item active" aria-current="page"><strong>{{ hc.name }}</strong></li>
@@ -21,6 +20,11 @@
         <div class="container-fluid">
             <div class="fade-in">
                 <div class="row pb-3">
+                    <a href="{% url 'hc_item_create' hc_id=hc_id %}"
+                       class="btn btn-outline-primary btn-sm pr-3">Thêm</a>
+                    <a href="{% url 'hc_item_upload' hc_id=hc_id %}" class="btn btn-sm btn-outline-danger px-2">Import
+                        Excel</a>
+
                     <div class="px-5">
                         Toggle column:
                         <a class="toggle-vis" data-column="1">Họ tên</a> -
@@ -63,8 +67,6 @@
                                 <td>{{ hc.gio_kham }}</td>
                                 <td>{{ hc.gio_kethuc }}</td>
                                 <td>{{ hc.status }}</td>
-
-
                                 <td><a class="btn btn-sm btn-outline-danger"
                                        href="{% url 'hc_item_delete' hc_id hc.id %}">Xóa</a></td>
                             </tr>
@@ -77,17 +79,17 @@
                                     select: true,
                                     dom: 'Bfrtip',
                                     buttons: [
-                                        'copy', 'excel', 'pdf', 'print',
+                                        'copy', 'excel', 'pdf', 'print'
                                         {
                                             text: 'Import from Excel',
                                             action: function (e, dt, node, config) {
-                                                window.location.href = '{% url 'hc_item_upload' hc_id=hc_id %}';
+                                                window.location.href = '{% url 'master_file_upload' %}';
                                             }
                                         },
                                         {
                                             text: 'Insert',
                                             action: function (e, dt, node, config) {
-                                                window.location.href = '{% url 'hc_item_create' hc_id=hc_id %}';
+                                                window.location.href = '{% url 'sort_group_create' %}';
                                             }
                                         }
                                     ],
@@ -100,6 +102,7 @@
                                     // Toggle the visibility
                                     column.visible(!column.visible());
                                 });
+
                             });
                         </script>
                     </table>
