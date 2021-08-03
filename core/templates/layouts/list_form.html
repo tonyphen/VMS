@@ -20,11 +20,6 @@
         <div class="container-fluid">
             <div class="fade-in">
                 <div class="row pb-3">
-                    <a href="{% url 'hc_item_create' hc_id=hc_id %}"
-                       class="btn btn-outline-primary btn-sm pr-3">Thêm</a>
-                    <a href="{% url 'hc_item_upload' hc_id=hc_id %}" class="btn btn-sm btn-outline-danger px-2">Import
-                        Excel</a>
-
                     <div class="px-5">
                         Toggle column:
                         <a class="toggle-vis" data-column="1">Họ tên</a> -
@@ -79,7 +74,7 @@
                                     select: true,
                                     dom: 'Bfrtip',
                                     buttons: [
-                                        'copy', 'excel', 'pdf', 'print'
+                                        'excel', 'pdf', 'print'
                                         {
                                             text: 'Import from Excel',
                                             action: function (e, dt, node, config) {

@@ -3,7 +3,9 @@
 {% load crispy_forms_tags %}
 {% block title %} {{ form_name }} {% endblock %}
 {% block breadcrumb %}
-    <li class="breadcrumb-item"><a href="{{ parent_link }}">{{ parent_name }}</a></li>
+    {% if parent_name %}
+        <li class="breadcrumb-item"><a href="{{ parent_link }}">{{ parent_name }}</a></li>
+    {% endif %}
     <li class="breadcrumb-item active" aria-current="page">{{ form_name }}</li>
 {% endblock %}
 {% block content %}

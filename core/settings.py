@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'bootstrap4',
     'bootstrap_datepicker_plus',
+
     # The inner apps
     'apps.basic',
     'apps.hr',
@@ -51,15 +52,24 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'login_required.middleware.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
-LOGIN_REDIRECT_URL = "home"   # Route defined in basic/urls.py
-LOGOUT_REDIRECT_URL = "home"  # Route defined in basic/urls.py
+LOGIN_REDIRECT_URL = "/"   # Route defined in basic/urls.py
+LOGOUT_REDIRECT_URL = "/"  # Route defined in basic/urls.py
+LOGIN_URL = "/login/"
+
 TEMPLATE_DIR = os.path.join(BASE_DIR, "core/templates")  # ROOT dir for templates
+
+LOGIN_REQUIRED_IGNORE_VIEW_NAMES = [
+    'login',
+    'admin:index',
+    'admin:login',
+]
 
 TEMPLATES = [
     {
@@ -163,8 +173,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #############################################################
 mimetypes.add_type('image/svg+xml', '.svg', True)
 
+
+
+DATA_PAGINATION = 50
+
 # Data Table
 
 PAGE_LENGTH = 15
+LIST_LENGTH = 25
 PAGINATION = 100
 

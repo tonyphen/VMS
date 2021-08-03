@@ -1,0 +1,160 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} Product List {% endblock %}
+
+{% block stylesheets %}
+    {% include 'includes/dataTables_css.html' %}
+{% endblock %}
+
+{% block javascripts %}
+    {% include 'includes/dataTables_scripts.html' %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'category_list' %}">Category</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><strong>PRODUCT LIST</strong></li>
+{% endblock %}
+
+{% block content %}
+    <main class="c-main">
+        <div class="container-fluid">
+            <div class="fade-in">
+                {#                                <div class="row pb-3">#}
+                {#                                    <div class="px-5">#}
+                {#                                        Toggle column:#}
+                {#                                        <a class="toggle-vis" data-column="1">Họ tên</a> -#}
+                {#                                        <a class="toggle-vis" data-column="2">MSNV</a> -#}
+                {#                                        <a class="toggle-vis" data-column="3">Số CMND</a> -#}
+                {#                                        <a class="toggle-vis" data-column="4">Số điện thoại</a> -#}
+                {#                                        <a class="toggle-vis" data-column="5">Số BHTY</a> -#}
+                {#                                        <a class="toggle-vis" data-column="6">Giới tính</a>#}
+                {#                                    </div>#}
+                {#                                </div>#}
+                <div class="row">
+                    <table id="aTable" class="table table-striped dt-responsive nowrap" style="width: 100%">
+                        <thead class="thead-light">
+                        <tr>
+                            {#                            <th>Warehouse</th>#}
+                            <th>Ccatergory</th>
+                            <th>Code</th>
+                            <th>Description</th>
+                            <th>Profile</th>
+                            <th>Wood Type</th>
+                            <th>Unit</th>
+                            <th>Min Qty</th>
+                            <th>Max Qty</th>
+                            <th>Xóa</th>
+                        </tr>
+                        </thead>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        $(document).ready(function () {
+            $('#aTable').dataTable({
+                processing: true,
+                serverSide: true,
+                pageLength: {{ pageLength }},
+                lengthMenu: [
+                    [25, 50, 100, -1],
+                    ['25 rows', '50 rows', '100 rows', 'Show all']
+                ],
+                select: true,
+                dom: 'Bfrtip',
+                buttons: [
+                    'pageLength',
+                    'excel', 'pdf', 'print',
+                    {
+                        text: 'Import from Excel',
+                        action: function (e, dt, node, config) {
+                            window.location.href = '{% url 'master_file_upload' %}';
+                        }
+                    },
+                    {
+                        text: 'Insert',
+                        action: function (e, dt, node, config) {
+                            window.location.href = '{% url 'product_create' main_cat %}';
+                        }
+                    }
+                ],
+                "ajax": {
+                    url: "{% url 'product_ajax_list' %}",
+                    type: "get",
+                    data: {"main_cat": "{{ main_cat }}"},
+                    processData: true,
+                },
+                "columns": [
+                    {"data": "category"},
+                    {"data": "code",
+                        "render":
+                            function(code, type, row, meta){
+                                if(type === 'display'){
+                                    let url_link = "{% url 'product_update' 0 1 %}"
+                                    url_link = url_link.replace(0, '{{ main_cat }}')
+                                    url_link = url_link.replace(1, code)
+                                    console.log(url_link)
+                                    data = '<a href="'+ url_link +'">' + code + '</a>';
+                                }
+                                return data;
+                            }
+                    },
+                    {"data": "description"},
+                    {"data": "profile"},
+                    {"data": "wood_type"},
+                    {"data": "unit"},
+                    {"data": "min_qty"},
+                    {"data": "max_qty"},
+                    {#{"data": null,#}
+                    {#    render: function ( data, type, row ) {#}
+                    {#        return '<button class="delete btn btn-sm btn-ghost-danger" type="button"> <svg class="c-icon"> <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-trash"></use></svg></button>';#}
+                    {#    }#}
+                    {#}#}
+                ],
+
+            });
+        });
+    </script>
+{% endblock %}
+
+
+
+<script>
+    $(function () {
+        var oTable = $('.table-@Model.Numero').dataTable(
+            {
+                "oLanguage": {"sUrl": "/LanguageURL"},
+                "bProcessing": true,
+                "bFilter": false,
+                "sPaginationType": "full_numbers",
+                "iDisplayLength": 10,
+                "bLengthChange": false,
+                "aoColumnDefs": [{"sClass": "center-col", "aTargets": ['align-center-col']},
+                    {"sClass": "read_only", "aTargets": ['read-only-col']},
+                    {"sClass": "small-width-col", "aTargets": ['small-col']}],
+                "aaSorting": [[0, "desc"]],
+                "bScrollCollapse": true,
+                "bServerSide": true,
+                "sAjaxSource": '/SourceURL',
+                "fnServerData": function (sSource, aoData, fnCallback) {
+                    aoData.push({"name": "Numero", "value": $(this).find("#Numero").val()});
+                    $.ajax({
+                        "dataType": 'json',
+                        "type": "POST",
+                        "url": sSource,
+                        "data": aoData,
+                        "success": fnCallback
+                    });
+                }
+            }).makeEditable({
+            sAddNewRowFormId: 'form-@Model.Numero',
+            sAddNewRowButtonId: 'btn-@Model.Numero',
+            btnDeleteRow: 'btn-del-@Model.Numero',
+            sAddURL: "/AddURL",
+            sDeleteURL: "/DeleteURL"
+        });
+    });
+</script>

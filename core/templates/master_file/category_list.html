@@ -1,0 +1,57 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block title %} Category List {% endblock %}
+{% block breadcrumb %}
+    <li class="breadcrumb-item active" aria-current="page">Category List</li>
+{% endblock %}
+
+{% block stylesheets %}
+    {% include 'includes/dataTables_css.html' %}
+{% endblock %}
+
+{% block javascripts %}
+    {% include 'includes/dataTables_scripts.html' %}
+{% endblock %}
+
+{% block content %}
+    <main class="c-main">
+        <div class="container-fluid">
+
+            <div class="fade-in">
+{#                <a href="#" class="btn btn-sm btn-outline-info shadow mb-2">Thêm</a>#}
+                <div class="row">
+                    {% for item in cat_list %}
+                        <div class="col-sm-3">
+                            <div class="card border-success shadow">
+                                <div class="card-header"><strong>{{ item.id }}</strong>
+                                    <a class="btn btn-sm btn-ghost-success float-right" type="button">
+                                        <svg class="c-icon">
+                                            <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+                                        </svg>
+
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    {{ item.description }}
+                                    <br>
+                                    {{ item.products.count|intcomma }} products
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row justify-content-between">
+                                        <button class="btn btn-sm btn-ghost-danger" type="button">
+                                            <svg class="c-icon">
+                                                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-trash"></use>
+                                            </svg>
+                                        </button>
+                                        <a href="{% url 'product_list' item.id %}" class="btn btn-sm btn-outline-primary">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

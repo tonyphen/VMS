@@ -5,57 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a46c8cff-10fc-49df-80ea-5906c30f7913" name="Default Changelist" comment="commit">
-      <change afterPath="$PROJECT_DIR$/apps/basic/dictionary.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/hr/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/inventory/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/inventory/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/inventory/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/inventory/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/inventory/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/inventory/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/inventory/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/inventory/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0002_auto_20210729_1755.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0003_auto_20210730_2005.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0004_auto_20210730_2107.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0005_alter_thick_inch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0006_alter_thick_mm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0007_product_warehouse.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0008_auto_20210730_2231.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0009_auto_20210730_2243.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0010_auto_20210730_2253.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0011_warehouse_type.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0012_auto_20210731_0710.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/bak/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/bak/0002_alter_profilemaster_group_id.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/bak/0003_alter_profilemaster_group_id.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/bak/0004_auto_20210728_1642.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/layouts/list_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/layouts/single_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/master_file/size.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/665a8e2a-96f9-49f2-854e-2ce93d37be6d.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0013_auto_20210731_1042.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0014_alter_warehouse_id.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0015_auto_20210731_1157.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0016_product_category.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0017_auto_20210731_1204.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0018_alter_product_category.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0019_auto_20210731_1557.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0020_auto_20210731_1603.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0021_auto_20210731_1636.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0022_auto_20210731_2032.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0023_auto_20210803_1111.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0024_auto_20210803_1116.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/static/assets/vendors/datatables/js/pdfmake.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/layouts/page-404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/master_file/category_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/master_file/product_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/master_file/warehouse_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/basic/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/basic/utilities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/basic/dictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/basic/dictionary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/basic/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/basic/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/hr/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/master_file/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/master_file/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/master_file/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/master_file/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/master_file/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/hr/hc_items.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/hr/hc_items.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/hr/hc_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/hr/hc_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/includes/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/navigation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/includes/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/master_file/master_file_upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/master_file/master_file_upload.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/master_file/profile_master_form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/master_file/profile_master_update.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/layouts/list_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/layouts/list_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/layouts/single_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/layouts/single_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/master_file/size.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/master_file/size.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/master_file/wood_definition.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/master_file/wood_definition.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/master_file/wood_definition_delete.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,8 +53,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -121,7 +106,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/templates/master_file" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MyTrading" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -136,10 +122,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\core\templates\master_file" />
+      <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\core\templates\layouts" />
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\master_file" />
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\master_file\migrations" />
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\basic\migrations" />
-      <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\hr\migrations" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\core\static\assets\vendors\datatables\bak" />
@@ -178,7 +164,8 @@
       <workItem from="1627101144940" duration="38021000" />
       <workItem from="1627271152885" duration="52218000" />
       <workItem from="1627442514087" duration="164000" />
-      <workItem from="1627442798293" duration="76066000" />
+      <workItem from="1627442798293" duration="131785000" />
+      <workItem from="1627869661377" duration="36610000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1626600394264</created>
@@ -285,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627442239126</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="commit">
+      <created>1627690481147</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1627690481147</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

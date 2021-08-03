@@ -1,9 +1,5 @@
-# -*- encoding: utf-8 -*-
-"""
-Copyright (c) 2019 - present AppSeed.us
-"""
-
 from django.shortcuts import render
+from login_required import login_not_required
 
 # Create your views here.
 from django.shortcuts import render, redirect
@@ -13,11 +9,10 @@ from django.forms.utils import ErrorList
 from django.http import HttpResponse
 from .forms import LoginForm, SignUpForm
 
+@login_not_required
 def login_view(request):
     form = LoginForm(request.POST or None)
-
     msg = None
-
     if request.method == "POST":
 
         if form.is_valid():
@@ -30,12 +25,12 @@ def login_view(request):
             else:    
                 msg = 'Invalid credentials'    
         else:
-            msg = 'Error validating the form'    
-
+            msg = 'Error validating the form'
     return render(request, "accounts/login.html", {"form": form, "msg" : msg})
 
-def register_user(request):
 
+@login_not_required
+def register_user(request):
     msg     = None
     success = False
 

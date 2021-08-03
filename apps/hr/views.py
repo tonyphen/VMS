@@ -9,7 +9,6 @@ from apps.basic.utilities import created_updated
 from apps.hr import models, forms
 
 
-@login_required
 def hc_chart(request, id):
     label = []
     data = []

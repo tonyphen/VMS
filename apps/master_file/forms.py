@@ -159,7 +159,7 @@ class LengthForm(forms.ModelForm):
         )
         self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
         self.helper.add_input(Button('cancel', 'Cancel', css_class='btn-warning',
-                                     onclick="window.location.href = '{}';".format(reverse('wood_definition'))))
+                                     onclick="window.location.href = '{}';".format(reverse('size'))))
 
 
 class ThickForm(forms.ModelForm):
@@ -175,7 +175,7 @@ class ThickForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
         self.helper.add_input(Button('cancel', 'Cancel', css_class='btn-warning',
-                                     onclick="window.location.href = '{}';".format(reverse('wood_definition'))))
+                                     onclick="window.location.href = '{}';".format(reverse('size'))))
         self.helper.layout = Layout(
             Row(
                 Column('mm', css_class="col-sm-2"),
@@ -204,6 +204,76 @@ class LogScaleForm(forms.ModelForm):
                 Column('dia', css_class="col-sm-2"),
                 Column('length', css_class="col-sm-2"),
                 Column('BF', css_class="col-sm-2"),
+            )
+        )
+
+
+class WarehouseForm(forms.ModelForm):
+    class Meta:
+        model = models.Warehouse
+        fields = [
+            'type', 'id', 'description', 'credit_acc', 'debit_acc'
+        ]
+        widgets = {
+            'id': forms.TextInput(attrs={'style': 'text-transform:uppercase;'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        id_readonly = kwargs.pop('id_readonly')
+        super(WarehouseForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.fields['id'].disabled = id_readonly
+        self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
+        self.helper.add_input(Button('cancel', 'Cancel', css_class='btn-warning',
+                                     onclick="window.location.href = '{}';".format(reverse('warehouse_list'))))
+        self.helper.layout = Layout(
+            Row(
+                Column('type', css_class="col-sm-2"),
+                Column('id', css_class="col-sm-2 readonly", readonly="true"),
+                Column('description', css_class="col-sm-6"),
+                Column('credit_acc', css_class="col-sm-1"),
+                Column('debit_acc', css_class="col-sm-1"),
+            )
+        )
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = models.Product
+        fields = [
+            'warehouse', 'category', 'code', 'description', 'profile', 'wood_type', 'unit',
+            'min_qty', 'max_qty'
+        ]
+        widgets = {
+            # 'code': forms.TextInput(attrs={'style': 'text-transform:uppercase;'}),
+            # 'parent_category': forms.TextInput(attrs={'style': 'text-transform:uppercase;'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        main_cat = kwargs.pop('main_cat')
+        super(ProductForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        # self.fields['parent_category'].choices = models.Category.objects.filter(parent_id=main_cat)
+        self.fields['profile'].choices = models.Profile.objects.all()
+        self.fields['wood_type'].choices = models.WoodType.objects.all()
+        self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
+        self.helper.add_input(Button('cancel', 'Cancel', css_class='btn-warning',
+                                     onclick="window.location.href = '{}';".format(reverse('product_list', kwargs={'main_cat':main_cat}))))
+        self.helper.layout = Layout(
+            Row(
+                Column('warehouse', css_class="col-sm-2"),
+                Column('category', css_class="col-sm-2"),
+                Column('code', css_class="col-sm-2"),
+                Column('description', css_class="col-sm-6"),
+            ),
+            Row(
+                Column('profile', css_class="col-sm-2"),
+                Column('wood_type', css_class="col-sm-2"),
+                Column('unit', css_class="col-sm-2"),
+                Column('min_qty', css_class="col-sm-2"),
+                Column('max_qty', css_class="col-sm-2"),
             )
         )
 

@@ -1,5 +1,5 @@
 from decimal import Decimal, getcontext
-
+from django.utils.text import slugify
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -165,6 +165,10 @@ class Country(models.Model):
     updated_by = models.ForeignKey(User, related_name='country_updater', on_delete=models.DO_NOTHING)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
 
+    class Meta:
+        ordering = ('sym',)
+        verbose_name_plural = 'Countries'
+
     def __str__(self):
         return self.sym
 
@@ -176,8 +180,8 @@ class Country(models.Model):
 
 
 class Warehouse(models.Model):
-    type = models.IntegerField(verbose_name='Type')
-    id = models.CharField(max_length=50, primary_key=True, verbose_name='Code')
+    type = models.CharField(max_length=20, choices=dictionary.MATERIAL_TYPE, verbose_name='Type')
+    id = models.SlugField(max_length=50, primary_key=True, verbose_name='Code')
     description = models.CharField(max_length=200, verbose_name='Description')
     credit_acc = models.IntegerField(verbose_name='credit code', blank=True, null=True)
     debit_acc = models.IntegerField(verbose_name='debit code', blank=True, null=True)
@@ -185,8 +189,12 @@ class Warehouse(models.Model):
     class Meta:
         ordering = ('type', 'id')
 
+    # def save(self,*args, **kwargs):
+    #     self.id = slugify(str(self.id).upper())
+    #     super(Warehouse, self).save(*args, **kwargs)
+
     def __str__(self):
-        return self.name
+        return self.description
 
 
 class Unit(models.Model):
@@ -194,18 +202,59 @@ class Unit(models.Model):
 
 
 class UnitConversion(models.Model):
-    f_unit = models.CharField(max_length=20, verbose_name='From unit')
-    t_unit = models.CharField(max_length=20, verbose_name='To unit')
+    f_unit = models.ForeignKey(Unit, related_name='f_unit', on_delete=models.CASCADE, verbose_name='From unit')
+    t_unit = models.ForeignKey(Unit, related_name='t_unit', on_delete=models.CASCADE, verbose_name='To unit')
     ratio = models.DecimalField(max_digits=10, decimal_places=5, verbose_name='Ratio')
 
 
+class Category(models.Model):
+    id = models.SlugField(max_length=100, primary_key=True, verbose_name='Category')
+    code = models.CharField(max_length=3, verbose_name='Code')
+    is_root = models.BooleanField(default=False, verbose_name='Is root Catergory')
+    parent = models.ForeignKey('self', related_name='child', blank=True, null=True, on_delete=models.CASCADE, verbose_name='Parent Category')
+    description = models.CharField(max_length=250, verbose_name='Description', blank=True, null=True)
+    useSequence = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ('parent_id', 'id',)
+        verbose_name_plural = 'Category'
+
+    def get_main_parent_id(self):
+        main_category = ''
+        current_category = self.id
+        if self.parent_id is None or self.is_root:
+            return self.id
+        else:
+            while current_category.parent is not None:
+                main_category = current_category.parent
+            return main_category
+
+    def get_parent_description(self):
+        return Category.objects.values('description').get(id=self.parent_id)
+
+    def get_full_parent_code(self):
+        if not self.parent:
+            return ''
+        parent_link = ''
+        is_top = False
+        categories = []
+        current_category = self.id
+        while current_category is not None:
+            categories.append(current_category)
+            current_category = current_category.parent
+        # '-'.join(map(str, categories))
+        # '-'.join([str(elem) for elem in categories])
+        return '-'.join(map(str, categories))
+
+
 class Product(models.Model):
-    warehouse_id = models.ForeignKey(Warehouse, related_name='product_warehouse', verbose_name='Warehouse', on_delete=models.DO_NOTHING)
+    warehouse = models.ForeignKey(Warehouse, related_name='products', verbose_name='Warehouse', on_delete=models.PROTECT)
+    category = models.ForeignKey(Category, related_name='products', on_delete=models.PROTECT, verbose_name='Category')
     code = models.CharField(max_length=50, primary_key=True, verbose_name='Code')
     description = models.CharField(max_length=250, verbose_name='Description')
-    profile = models.ForeignKey(Profile, related_name='product_profile', blank=True, null=True, on_delete=models.DO_NOTHING)
-    wood_type = models.ForeignKey(WoodType, related_name='product_woodtype', blank=True, null=True, on_delete=models.DO_NOTHING)
-    unit = models.ForeignKey(Unit, related_name='product_unit', verbose_name='Unit', on_delete=models.DO_NOTHING)
+    profile = models.ForeignKey(Profile, related_name='product_profile', blank=True, null=True, on_delete=models.PROTECT)
+    wood_type = models.ForeignKey(WoodType, related_name='product_woodtype', blank=True, null=True, on_delete=models.PROTECT)
+    unit = models.ForeignKey(Unit, related_name='product_unit', verbose_name='Unit', on_delete=models.PROTECT)
     min_qty = models.IntegerField(default=0)
     max_qty = models.IntegerField(default=0)
 
@@ -216,3 +265,4 @@ class Product(models.Model):
 
     def __str__(self):
         return str(self.description)
+

@@ -9,3 +9,7 @@ PROD_TYPE = (
     ("F/J Edg", "F/J Edg"),
 )
 
+MATERIAL_TYPE = (
+    ("Wood", "Wood"),
+    ("Material", "Material")
+)

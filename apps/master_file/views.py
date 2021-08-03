@@ -1,9 +1,11 @@
 import datetime
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator, EmptyPage
 from django.conf import settings
+from django.db.models import Count
 from django.shortcuts import render, redirect, get_object_or_404
 from openpyxl import load_workbook
-from django.views import generic
+from django.utils.html import escape
 
 from apps.basic.utilities import created_updated
 from apps.master_file import models, forms
@@ -151,6 +153,26 @@ def master_file_upload(request):
                 data.append(log)
             models.LogScale.objects.bulk_create(data)
             return redirect('size')
+
+        if str(file_name).lower() == 'fg_products.xlsx':
+            for row in worksheet.iter_rows(min_row=2):
+                fg = models.Product()
+                fg.warehouse_id = row[0].value
+                fg.main_category_id = row[1].value
+                fg.parent_category = row[2].value
+                fg.code = row[4].value
+                fg.description = row[5].value
+                fg.profile_id = row[6].value[1:5]
+                fg.wood_type_id = row[7].value[1:3]
+                fg.unit_id = row[8].value
+                fg.min_qty = 0
+                fg.max_qty = 0
+                fg.created_by_id = row[11].value
+                fg.updated_by_id = row[12].value
+
+                fg.save()
+
+            return redirect('product_list', main_cat='FINISHED_GOODS')
     return render(request, 'master_file/master_file_upload.html')
 
 
@@ -159,14 +181,21 @@ def size(request):
     qsThick = models.Thick.objects.all()
     qsLogScale = models.LogScale.objects.all()
 
-    pageLength = settings.PAGE_LENGTH
     context = {
         'length_list': qsLength,
         'thick_list': qsThick,
         'log_scale_list': qsLogScale,
-        'pageLength': pageLength
+        'pageLength': settings.PAGE_LENGTH
     }
     return render(request, 'master_file/size.html', context)
+
+
+def category_list(request):
+    qsCat = models.Category.objects.filter(level=0)
+    context = {
+        'cat_list': qsCat
+    }
+    return render(request, 'master_file/category_list.html', context)
 
 
 def profile_master_create(request):
@@ -207,7 +236,7 @@ def profile_master_delete(request, id):
     if request.method == "POST":
         obj.delete()
         return redirect('wood_definition')
-    return
+    return render(request, 'layouts/page-404.html')
 
 
 def profile_create(request):
@@ -248,7 +277,7 @@ def profile_delete(request, id):
     if request.method == "POST":
         obj.delete()
         return redirect('wood_definition')
-    return
+    return render(request, 'layouts/page-404.html')
 
 
 def wood_type_create(request):
@@ -289,7 +318,7 @@ def wood_type_delete(request, id):
     if request.method == "POST":
         obj.delete()
         return redirect('wood_definition')
-    return
+    return render(request, 'layouts/page-404.html')
 
 
 def sort_group_create(request):
@@ -330,7 +359,7 @@ def sort_group_delete(request, id):
     if request.method == "POST":
         obj.delete()
         return redirect('wood_definition')
-    return
+    return render(request, 'layouts/page-404.html')
 
 
 def length_create(request):
@@ -372,7 +401,7 @@ def length_delete(request, id):
     if request.method == "POST":
         obj.delete()
         return redirect('wood_definition')
-    return
+    return render(request, 'layouts/page-404.html')
 
 
 def thick_create(request):
@@ -414,7 +443,7 @@ def thick_delete(request, id):
     if request.method == "POST":
         obj.delete()
         return redirect('size')
-    return
+    return render(request, 'layouts/page-404.html')
 
 
 def log_scale_create(request):
@@ -456,5 +485,104 @@ def log_scale_delete(request,id):
     if request.method == "POST":
         obj.delete()
         return redirect('size')
-    return
+    return render(request, 'layouts/page-404.html')
+
+
+def warehouse_list(request):
+    qsWarehouse = models.Warehouse.objects.all()
+    context = {
+        'warehouse_list': qsWarehouse,
+        'pageLength': settings.PAGE_LENGTH
+    }
+    return render(request, 'master_file/warehouse_list.html', context)
+
+
+def warehouse_create(request):
+    form = forms.WarehouseForm(request.POST or None, id_readonly=False)
+    if request.method == 'POST':
+        form.instance.created_by = request.user
+        if form.is_valid():
+            form.instance.id = str(form.instance.id).upper()
+            form.instance.description = str(form.instance.description).upper()
+            form.save()
+            return redirect('warehouse_list')
+    context = {
+        'form_name': 'Warehouse',
+        'form': form,
+    }
+    return render(request, "layouts/single_form.html", context)
+
+
+def warehouse_update(request, id):
+    obj = get_object_or_404(models.Warehouse, id=id)
+    form = forms.WarehouseForm(request.POST or None, id_readonly=True, instance=obj)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('warehouse_list')
+    else:
+        context = {
+            'form_name': 'Warehouse',
+            'form': form,
+        }
+        return render(request, "layouts/single_form.html", context)
+
+
+def warehouse_delete(request, id):
+    obj = get_object_or_404(models.Warehouse, id=id )
+    if request.method == "POST":
+        obj.delete()
+        return redirect('warehouse_list')
+    return render(request, 'layouts/page-404.html')
+
+
+def product_list(request, main_cat):
+    context = {
+        'main_cat': main_cat,
+        'pageLength': settings.LIST_LENGTH
+    }
+    return render(request, 'master_file/product_list.html', context)
+
+
+def product_create(request, main_cat):
+    form = forms.ProductForm(request.POST or None, main_cat=main_cat)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.instance.created_by = request.user
+            form.instance.updated_by = request.user
+            form.save()
+            return redirect('product_list', main_cat=main_cat)
+    context = {
+        'form_name': 'Create a Product',
+        'parent_link': '/mf/' + main_cat + '/product_list/',
+        'parent_name': 'Product List',
+        'main_cat': main_cat,
+        'form': form,
+    }
+    return render(request, "layouts/single_form.html", context)
+
+
+def product_update(request, main_cat, id):
+    obj = get_object_or_404(models.Product, category=main_cat, code=id)
+    form = forms.ProductForm(request.POST or None, main_cat=main_cat, instance=obj)
+    if form.is_valid():
+        form.instance.updated_by = request.user
+        form.save()
+        return redirect('product_list', main_cat)
+    context = {
+        'form_name': 'Edit Product',
+        'parent_link': '/mf/' + main_cat + '/product_list/',
+        'parent_name': 'Product List',
+        'main_cat': main_cat,
+        'form': form,
+    }
+    return render(request, "layouts/single_form.html", context)
+
+
+def product_delete(request, id):
+    obj = get_object_or_404(models.Product,code=id )
+    if request.method == "POST":
+        obj.delete()
+        return redirect('product_list')
+    return render(request, 'layouts/page-404.html')
 

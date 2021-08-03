@@ -1,11 +1,13 @@
+from django.conf.urls import url
 from django.urls import path
 
-from apps.master_file import views
+from apps.master_file import views, api
 
 urlpatterns = [
     path('wd/', views.wood_definition, name='wood_definition'),
     path('size/', views.size, name='size'),
     path('mf_upload/', views.master_file_upload, name='master_file_upload'),
+    path('category_list/', views.category_list, name='category_list'),
 
     path('profilemaster/create/', views.profile_master_create, name='profile_master_create'),
     path('profilemaster/update/<str:id>/', views.profile_master_update, name='profile_master_update'),
@@ -34,7 +36,17 @@ urlpatterns = [
     path('ls/create/', views.log_scale_create, name='log_scale_create'),
     path('ls/update/<int:id>/', views.log_scale_update, name='log_scale_update'),
     path('ls/delete/<int:id>/', views.log_scale_delete, name='log_scale_delete'),
+    
+    path('wh/', views.warehouse_list, name='warehouse_list'),
+    path('wh/create/', views.warehouse_create, name='warehouse_create'),
+    path('wh/update/<str:id>/', views.warehouse_update, name='warehouse_update'),
+    path('wh/delete/<str:id>/', views.warehouse_delete, name='warehouse_delete'),
 
-
+    # url(r'ajax/product/web\.html$', api.AjaxProductList.as_view(), name='ajax_product_list'),
+    path('product_ajax_list/', api.AjaxProductList.as_view(), name='product_ajax_list'),
+    path('<str:main_cat>/product_list/', views.product_list, name='product_list'),
+    path('<str:main_cat>/product/create/', views.product_create, name='product_create'),
+    path('<str:main_cat>/product/update/<str:id>/', views.product_update, name='product_update'),
+    path('<str:main_cat>/product/delete/<str:id>/', views.product_delete, name='product_delete'),
 
 ]
