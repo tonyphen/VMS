@@ -32,7 +32,7 @@
                 {#                                    </div>#}
                 {#                                </div>#}
                 <div class="row">
-                    <table id="aTable" class="table table-striped dt-responsive nowrap" style="width: 100%">
+                    <table id="aTable" class="dataTable display hover dt-responsive nowrap" style="width: 100%">
                         <thead class="thead-light">
                         <tr>
                             {#                            <th>Warehouse</th>#}
@@ -40,11 +40,11 @@
                             <th>Code</th>
                             <th>Description</th>
                             <th>Profile</th>
+                            <th>Color</th>
                             <th>Wood Type</th>
                             <th>Unit</th>
                             <th>Min Qty</th>
                             <th>Max Qty</th>
-                            <th>Xóa</th>
                         </tr>
                         </thead>
                     </table>
@@ -104,6 +104,7 @@
                     },
                     {"data": "description"},
                     {"data": "profile"},
+                    {"data": "color"},
                     {"data": "wood_type"},
                     {"data": "unit"},
                     {"data": "min_qty"},

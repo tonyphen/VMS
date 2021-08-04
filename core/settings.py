@@ -174,7 +174,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 mimetypes.add_type('image/svg+xml', '.svg', True)
 
 
-
 DATA_PAGINATION = 50
 
 # Data Table

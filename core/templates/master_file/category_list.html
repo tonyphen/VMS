@@ -35,17 +35,7 @@
                                 <div class="card-body">
                                     {{ item.description }}
                                     <br>
-                                    {{ item.products.count|intcomma }} products
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row justify-content-between">
-                                        <button class="btn btn-sm btn-ghost-danger" type="button">
-                                            <svg class="c-icon">
-                                                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-trash"></use>
-                                            </svg>
-                                        </button>
-                                        <a href="{% url 'product_list' item.id %}" class="btn btn-sm btn-outline-primary">Chi tiết</a>
-                                    </div>
+                                    <a href="{% url 'product_list' item.id %}" class="btn btn-sm btn-outline-primary">{{ item.products.count|intcomma }} products</a>
                                 </div>
                             </div>
                         </div>

@@ -5,6 +5,7 @@ from apps.master_file import models
 admin.site.register(models.ProfileMaster)
 admin.site.register(models.Profile)
 admin.site.register(models.WoodType)
+admin.site.register(models.Color)
 admin.site.register(models.SortGroup)
 admin.site.register(models.Length)
 admin.site.register(models.Thick)

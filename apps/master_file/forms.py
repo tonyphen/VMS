@@ -238,11 +238,11 @@ class WarehouseForm(forms.ModelForm):
         )
 
 
-class ProductForm(forms.ModelForm):
+class FGProductForm(forms.ModelForm):
     class Meta:
         model = models.Product
         fields = [
-            'warehouse', 'category', 'code', 'description', 'profile', 'wood_type', 'unit',
+            'warehouse', 'category', 'code', 'description', 'profile', 'color', 'wood_type', 'unit',
             'min_qty', 'max_qty'
         ]
         widgets = {
@@ -252,12 +252,49 @@ class ProductForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         main_cat = kwargs.pop('main_cat')
-        super(ProductForm, self).__init__(*args, **kwargs)
+        super(FGProductForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.fields['code'].disabled = True
+        self.helper.layout = Layout(
+            Row(
+                Column('warehouse', css_class="col-sm-2"),
+                Column('category', css_class="col-sm-2"),
+                Column('profile', css_class="col-sm-2"),
+                Column('color', css_class="col-sm-2"),
+                Column('wood_type', css_class="col-sm-2"),
+            ),
+            Row(
+                Column('code', css_class="col-sm-2"),
+                Column('description', css_class="col-sm-5"),
+                Column('unit', css_class="col-sm-1"),
+                Column('min_qty', css_class="col-sm-1"),
+                Column('max_qty', css_class="col-sm-1"),
+            )
+        )
         self.helper.form_method = 'post'
-        # self.fields['parent_category'].choices = models.Category.objects.filter(parent_id=main_cat)
-        self.fields['profile'].choices = models.Profile.objects.all()
-        self.fields['wood_type'].choices = models.WoodType.objects.all()
+        self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
+        self.helper.add_input(Button('cancel', 'Cancel', css_class='btn-warning',
+                                     onclick="window.location.href = '{}';".format(reverse('product_list', kwargs={'main_cat':main_cat}))))
+
+
+class RWProductForm(forms.ModelForm):
+    class Meta:
+        model = models.Product
+        fields = [
+            'warehouse', 'category', 'code', 'description', 'profile', 'wood_type', 'sort_group', 'unit',
+            'min_qty', 'max_qty'
+        ]
+        widgets = {
+            # 'code': forms.TextInput(attrs={'style': 'text-transform:uppercase;'}),
+            # 'parent_category': forms.TextInput(attrs={'style': 'text-transform:uppercase;'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        main_cat = kwargs.pop('main_cat')
+        super(RWProductForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.fields['code'].disabled = True
+        self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
         self.helper.add_input(Button('cancel', 'Cancel', css_class='btn-warning',
                                      onclick="window.location.href = '{}';".format(reverse('product_list', kwargs={'main_cat':main_cat}))))
@@ -265,15 +302,15 @@ class ProductForm(forms.ModelForm):
             Row(
                 Column('warehouse', css_class="col-sm-2"),
                 Column('category', css_class="col-sm-2"),
-                Column('code', css_class="col-sm-2"),
-                Column('description', css_class="col-sm-6"),
-            ),
-            Row(
                 Column('profile', css_class="col-sm-2"),
                 Column('wood_type', css_class="col-sm-2"),
-                Column('unit', css_class="col-sm-2"),
-                Column('min_qty', css_class="col-sm-2"),
-                Column('max_qty', css_class="col-sm-2"),
+                Column('sort_group', css_class="col-sm-2"),
+            ),
+            Row(
+                Column('code', css_class="col-sm-2"),
+                Column('description', css_class="col-sm-5"),
+                Column('unit', css_class="col-sm-1"),
+                Column('min_qty', css_class="col-sm-1"),
+                Column('max_qty', css_class="col-sm-1"),
             )
         )
-

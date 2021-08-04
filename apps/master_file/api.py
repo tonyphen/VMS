@@ -60,6 +60,7 @@ class AjaxProductList(View):
                 'code': prod.code,
                 'description': prod.description,
                 'profile': prod.profile.profile_sym,
+                'color': prod.color_id,
                 'wood_type': prod.wood_type.sym,
                 'unit': prod.unit.unit,
                 'min_qty': prod.min_qty,

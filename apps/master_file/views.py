@@ -8,6 +8,7 @@ from openpyxl import load_workbook
 from django.utils.html import escape
 
 from apps.basic.utilities import created_updated
+from apps.basic import dictionary
 from apps.master_file import models, forms
 
 
@@ -54,8 +55,8 @@ def master_file_upload(request):
         if str(file_name).lower() == 'length_master.xlsx':
             for row in worksheet.iter_rows(min_row=2):
                 length = models.Length()
-                length.feet = round(row[0].value,4)
-                length.inch = round(row[1].value,2)
+                length.feet = round(row[0].value, 4)
+                length.inch = round(row[1].value, 2)
                 length.mm = int(row[2].value)
                 if row[3].value == 1:
                     length.freqUsed = True
@@ -77,10 +78,10 @@ def master_file_upload(request):
                 profile.profile_sym = str(row[4].value).upper()
                 profile.description = str(row[5].value).upper()
                 profile.image = None
-                profile.width = round(float(row[6].value),2)
-                profile.thick = round(float(row[7].value),3)
-                profile.CBM_Feet = round(float(row[8].value),6)
-                profile.M2_Feet = round(float(row[9].value),6)
+                profile.width = round(float(row[6].value), 2)
+                profile.thick = round(float(row[7].value), 3)
+                profile.CBM_Feet = round(float(row[8].value), 6)
+                profile.M2_Feet = round(float(row[9].value), 6)
                 profile.bundle = int(row[10].value)
                 profile.created_by = request.user
                 profile.updated_by = request.user
@@ -191,7 +192,7 @@ def size(request):
 
 
 def category_list(request):
-    qsCat = models.Category.objects.filter(level=0)
+    qsCat = models.Category.objects.filter(is_root=True)
     context = {
         'cat_list': qsCat
     }
@@ -464,8 +465,8 @@ def log_scale_create(request):
     return render(request, "layouts/single_form.html", context)
 
 
-def log_scale_update(request,id ):
-    obj = get_object_or_404(models.LogScale,id=id )
+def log_scale_update(request, id):
+    obj = get_object_or_404(models.LogScale, id=id)
     form = forms.LogScaleForm(request.POST or None, instance=obj)
     if form.is_valid():
         form.instance.updated_by = request.user
@@ -480,8 +481,8 @@ def log_scale_update(request,id ):
     return render(request, "layouts/single_form.html", context)
 
 
-def log_scale_delete(request,id):
-    obj = get_object_or_404(models.LogScale,id=id)
+def log_scale_delete(request, id):
+    obj = get_object_or_404(models.LogScale, id=id)
     if request.method == "POST":
         obj.delete()
         return redirect('size')
@@ -529,7 +530,7 @@ def warehouse_update(request, id):
 
 
 def warehouse_delete(request, id):
-    obj = get_object_or_404(models.Warehouse, id=id )
+    obj = get_object_or_404(models.Warehouse, id=id)
     if request.method == "POST":
         obj.delete()
         return redirect('warehouse_list')
@@ -545,9 +546,19 @@ def product_list(request, main_cat):
 
 
 def product_create(request, main_cat):
-    form = forms.ProductForm(request.POST or None, main_cat=main_cat)
+
+    if main_cat == dictionary._FG_PRODUCT:
+        frm = forms.FGProductForm
+    elif main_cat == dictionary._RAW_PRODUCT:
+        frm = forms.RWProductForm
+
+    form = frm(request.POST or None, main_cat=main_cat)
     if request.method == 'POST':
+        print('F' + request.POST.get('profile') + request.POST.get('wood_type'))
         if form.is_valid():
+            # Tạo code FG
+            # if main_cat == dictionary._FG_PRODUCT:
+
             form.instance.created_by = request.user
             form.instance.updated_by = request.user
             form.save()
@@ -564,7 +575,8 @@ def product_create(request, main_cat):
 
 def product_update(request, main_cat, id):
     obj = get_object_or_404(models.Product, category=main_cat, code=id)
-    form = forms.ProductForm(request.POST or None, main_cat=main_cat, instance=obj)
+    form = forms.FGProductForm(request.POST or None, main_cat=main_cat, instance=obj)
+
     if form.is_valid():
         form.instance.updated_by = request.user
         form.save()
@@ -580,9 +592,8 @@ def product_update(request, main_cat, id):
 
 
 def product_delete(request, id):
-    obj = get_object_or_404(models.Product,code=id )
+    obj = get_object_or_404(models.Product, code=id)
     if request.method == "POST":
         obj.delete()
         return redirect('product_list')
     return render(request, 'layouts/page-404.html')
-

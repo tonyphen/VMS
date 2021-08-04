@@ -104,6 +104,33 @@ class SortGroup(models.Model):
         return super(SortGroup, self).save(*args, **kwargs)
 
 
+class Color(models.Model):
+    color_group = models.CharField(max_length=50, choices=dictionary.COLOR_GROUP, verbose_name='Color Group')
+    color_id = models.CharField(max_length=4, verbose_name='Code')
+    description = models.CharField(max_length=100, verbose_name='Description')
+    sort_group = models.ForeignKey(SortGroup, related_name='colors', on_delete=models.PROTECT, verbose_name='Sort Group', blank=True, null=True)
+    sort_group_note = models.CharField(max_length=100, verbose_name='Sort Group Note', blank=True, null=True)
+    wood_type = models.ForeignKey(WoodType, related_name='colors', on_delete=models.PROTECT, verbose_name='Wood Type', blank=True, null=True)
+    gloss = models.CharField(max_length=20, verbose_name='Gloss', blank=True, null=True)
+    printed = models.BooleanField(verbose_name='Printed', default=False)
+    distressed = models.BooleanField(verbose_name='Distressed', default=False)
+    distressed_remark = models.CharField(max_length=100, verbose_name='Distressed remark', blank=True, null=True)
+    phun_hot = models.BooleanField(verbose_name='Phun hột', default=False)
+    emboss = models.BooleanField(verbose_name='Emboss', default=False)
+    scratch = models.BooleanField(verbose_name='Scratch', default=False)
+    glazed = models.BooleanField(verbose_name='Glazed', default=False)
+    danh_bui = models.BooleanField(verbose_name='Đánh bụi', default=False)
+    remark = models.CharField(max_length=250, verbose_name='Remark')
+    created_by = models.ForeignKey(User, related_name='color_creator', on_delete=models.DO_NOTHING)
+    updated_by = models.ForeignKey(User, related_name='color_updater', on_delete=models.DO_NOTHING)
+
+    class Meta:
+        ordering = ('id',)
+
+    def __str__(self):
+        return self.color_id + '-' + self.description
+
+
 class Length(models.Model):
     mm = models.IntegerField(primary_key=True, default=0, verbose_name='MM')
     feet = models.DecimalField(max_digits=8, decimal_places=4, verbose_name='Feet')
@@ -200,6 +227,9 @@ class Warehouse(models.Model):
 class Unit(models.Model):
     unit = models.CharField(max_length=20, primary_key=True, verbose_name='Unit')
 
+    def __str__(self):
+        return self.unit
+
 
 class UnitConversion(models.Model):
     f_unit = models.ForeignKey(Unit, related_name='f_unit', on_delete=models.CASCADE, verbose_name='From unit')
@@ -218,6 +248,9 @@ class Category(models.Model):
     class Meta:
         ordering = ('parent_id', 'id',)
         verbose_name_plural = 'Category'
+
+    def __str__(self):
+        return self.id
 
     def get_main_parent_id(self):
         main_category = ''
@@ -254,6 +287,8 @@ class Product(models.Model):
     description = models.CharField(max_length=250, verbose_name='Description')
     profile = models.ForeignKey(Profile, related_name='product_profile', blank=True, null=True, on_delete=models.PROTECT)
     wood_type = models.ForeignKey(WoodType, related_name='product_woodtype', blank=True, null=True, on_delete=models.PROTECT)
+    color = models.ForeignKey(Color, related_name='products', on_delete=models.PROTECT, verbose_name='Color', blank=True, null=True)
+    sort_group = models.ForeignKey(SortGroup, related_name='products', verbose_name='Sort Group', on_delete=models.PROTECT, blank=True, null=True)
     unit = models.ForeignKey(Unit, related_name='product_unit', verbose_name='Unit', on_delete=models.PROTECT)
     min_qty = models.IntegerField(default=0)
     max_qty = models.IntegerField(default=0)
@@ -264,5 +299,5 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True, editable=False)
 
     def __str__(self):
-        return str(self.description)
+        return str(self.code)
 
