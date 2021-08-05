@@ -5,18 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a46c8cff-10fc-49df-80ea-5906c30f7913" name="Default Changelist" comment="commit">
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0025_auto_20210803_2107.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0026_product_sort_group.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0027_auto_20210804_1630.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0028_alter_product_color.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0029_alter_product_sort_group.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0030_alter_color_color_group.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0031_alter_color_remark.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0032_auto_20210805_0847.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0033_alter_color_options.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0034_alter_color_options.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0035_alter_color_options.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0036_alter_color_wood_type.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/layouts/no_permission.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/master_file/color_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/basic/dictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/basic/dictionary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/master_file/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/master_file/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/master_file/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/master_file/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/master_file/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/master_file/category_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/master_file/category_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/master_file/product_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/master_file/product_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/includes/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/navigation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/includes/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/sidebar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +92,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MyTrading" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/templates/layouts" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -97,8 +107,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\core\templates\master_file" />
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\core\templates\layouts" />
+      <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\core\templates\master_file" />
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\master_file" />
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\master_file\migrations" />
       <recent name="C:\Users\kenny.VINAWOOD_COM\PycharmProjects\vms\apps\basic\migrations" />
@@ -141,7 +151,7 @@
       <workItem from="1627271152885" duration="52218000" />
       <workItem from="1627442514087" duration="164000" />
       <workItem from="1627442798293" duration="131785000" />
-      <workItem from="1627869661377" duration="50079000" />
+      <workItem from="1627869661377" duration="79478000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1626600394264</created>
@@ -262,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627993518174</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="commit">
+      <created>1628063118074</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1628063118074</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

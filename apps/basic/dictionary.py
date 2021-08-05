@@ -14,7 +14,8 @@ COLOR_GROUP = (
     ("ELEMENT", "ELEMENT"),
     ("KEO", "KEO"),
     ("PAINT", "PAINT"),
-    ("STAIN", "STAIN")
+    ("STAIN", "STAIN"),
+    ("Un_spec", "Un_spec")
 )
 
 WOOD_GROUP_CHOICE = (

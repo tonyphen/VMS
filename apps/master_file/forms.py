@@ -22,7 +22,8 @@ class ProfileMasterForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
-        self.helper.add_input(Button('cancel', 'Cancel', css_class='btn-warning', onclick="window.location.href = '{}';".format(reverse('wood_definition'))))
+        self.helper.add_input(Button('cancel', 'Cancel', css_class='btn-warning',
+                                     onclick="window.location.href = '{}';".format(reverse('wood_definition'))))
         self.helper.layout = Layout(
             Row(
                 Column('group_id', css_class="col-sm-2"),
@@ -274,7 +275,8 @@ class FGProductForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
         self.helper.add_input(Button('cancel', 'Cancel', css_class='btn-warning',
-                                     onclick="window.location.href = '{}';".format(reverse('product_list', kwargs={'main_cat':main_cat}))))
+                                     onclick="window.location.href = '{}';".format(
+                                         reverse('product_list', kwargs={'main_cat': main_cat}))))
 
 
 class RWProductForm(forms.ModelForm):
@@ -297,7 +299,8 @@ class RWProductForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
         self.helper.add_input(Button('cancel', 'Cancel', css_class='btn-warning',
-                                     onclick="window.location.href = '{}';".format(reverse('product_list', kwargs={'main_cat':main_cat}))))
+                                     onclick="window.location.href = '{}';".format(
+                                         reverse('product_list', kwargs={'main_cat': main_cat}))))
         self.helper.layout = Layout(
             Row(
                 Column('warehouse', css_class="col-sm-2"),
@@ -312,5 +315,57 @@ class RWProductForm(forms.ModelForm):
                 Column('unit', css_class="col-sm-1"),
                 Column('min_qty', css_class="col-sm-1"),
                 Column('max_qty', css_class="col-sm-1"),
+            )
+        )
+
+
+class ColorForm(forms.ModelForm):
+    class Meta:
+        model = models.Color
+        fields = ['color_group', 'color_id', 'description', 'gloss', 'wood_type', 'sort_group', 'sort_group_note',
+                  'distressed_remark',
+                  'distressed', 'printed', 'phun_hot', 'emboss', 'scratch', 'glazed', 'danh_bui', 'remark']
+        widgets = {
+            'color_id': forms.TextInput(attrs={'style': 'text-transform:uppercase;'}),
+            'printed': forms.CheckboxInput,
+            'distressed': forms.CheckboxInput,
+            'phun_hot': forms.CheckboxInput,
+            'emboss': forms.CheckboxInput,
+            'scratch': forms.CheckboxInput,
+            'glazed': forms.CheckboxInput,
+            'danh_bui': forms.CheckboxInput,
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(ColorForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
+        self.helper.add_input(Button('cancel', 'Cancel', css_class='btn-warning',
+                                     onclick="window.location.href = '{}';".format(reverse('color_list'))))
+        self.helper.layout = Layout(
+            Row(
+                Column('color_group', css_class="col-sm-2"),
+                Column('color_id', css_class="col-sm-2"),
+                Column('description', css_class="col-sm-6"),
+                Column('gloss', css_class="col-sm-2"),
+            ),
+            Row(
+                Column('wood_type', css_class="col-sm-2"),
+                Column('sort_group', css_class="col-sm-2"),
+                Column('sort_group_note', css_class="col-sm-8"),
+            ),
+            Row(
+                Column('distressed_remark', css_class="col-sm-4"),
+                Column('distressed', css_class="col-sm-1"),
+                Column('printed', css_class="col-sm-1"),
+                Column('phun_hot', css_class="col-sm-1"),
+                Column('emboss', css_class="col-sm-1"),
+                Column('scratch', css_class="col-sm-1"),
+                Column('glazed', css_class="col-sm-1"),
+                Column('danh_bui', css_class="col-sm-1"),
+            ),
+            Row(
+                Column('remark', css_class="col-sm-12"),
             )
         )

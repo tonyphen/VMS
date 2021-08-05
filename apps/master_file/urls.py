@@ -42,11 +42,16 @@ urlpatterns = [
     path('wh/update/<str:id>/', views.warehouse_update, name='warehouse_update'),
     path('wh/delete/<str:id>/', views.warehouse_delete, name='warehouse_delete'),
 
-    # url(r'ajax/product/web\.html$', api.AjaxProductList.as_view(), name='ajax_product_list'),
     path('product_ajax_list/', api.AjaxProductList.as_view(), name='product_ajax_list'),
     path('<str:main_cat>/product_list/', views.product_list, name='product_list'),
     path('<str:main_cat>/product/create/', views.product_create, name='product_create'),
     path('<str:main_cat>/product/update/<str:id>/', views.product_update, name='product_update'),
     path('<str:main_cat>/product/delete/<str:id>/', views.product_delete, name='product_delete'),
+    
+    path('color_ajax_list/', api.AjaxColorList.as_view(), name='color_ajax_list'),
+    path('color_list/', views.color_list, name='color_list'),
+    path('color/create/', views.color_create, name='color_create'),
+    path('color/update/<str:id>/', views.color_update, name='color_update'),
+    path('color/delete/<str:id>/', views.color_delete, name='color_delete'),
 
 ]

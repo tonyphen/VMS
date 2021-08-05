@@ -1,6 +1,4 @@
-import datetime
-from django.contrib.auth.models import User
-from django.core.paginator import Paginator, EmptyPage
+from django.contrib.auth.decorators import user_passes_test
 from django.conf import settings
 from django.db.models import Count
 from django.shortcuts import render, redirect, get_object_or_404
@@ -174,6 +172,38 @@ def master_file_upload(request):
                 fg.save()
 
             return redirect('product_list', main_cat='FINISHED_GOODS')
+
+        if str(file_name).lower() == 'colors.xlsx':
+            for row in worksheet.iter_rows(min_row=2):
+                color = models.Color()
+                color.color_group = row[0].value
+                # if row[5].value:
+                #     print("'" + row[5].value[1:3] + "'")
+                color.color_id = row[1].value[1:5]
+                color.description = row[2].value
+                color.sort_group_id = row[3].value
+                color.sort_group_note = row[4].value
+                if row[5].value:
+                    color.wood_type_id = row[5].value[1:3]
+                else:
+                    color.wood_type_id = None
+                color.gloss = row[6].value
+                color.printed = row[7].value
+                color.distressed = row[8].value
+                color.distressed_remark = row[9].value
+                color.phun_hot = row[10].value
+                color.emboss = row[11].value
+                color.scratch = row[12].value
+                color.glazed = row[13].value
+                color.danh_bui = row[14].value
+                color.remark = row[15].value
+                color.created_by_id = 1
+                color.updated_by_id = 1
+                data.append(color)
+                # color.save()
+            models.Color.objects.bulk_create(data)
+            return redirect('color_list')
+
     return render(request, 'master_file/master_file_upload.html')
 
 
@@ -597,3 +627,54 @@ def product_delete(request, id):
         obj.delete()
         return redirect('product_list')
     return render(request, 'layouts/page-404.html')
+
+
+def color_list(request):
+    context = {
+        'pageLength': settings.LIST_LENGTH
+    }
+    return render(request, 'master_file/color_list.html', context)
+
+
+def color_create(request):
+    form = forms.ColorForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.instance.created_by = request.user
+            form.instance.updated_by = request.user
+            form.save()
+            return redirect('color_list')
+    context = {
+        'form_name': 'Color List',
+        # 'parent_link': "{% url '' %}",
+        # 'parent_name': '',
+        'form': form,
+    }
+    return render(request, "layouts/single_form.html", context)
+
+
+def color_update(request, id):
+    if not request.user.has_perm('can_edit_color'):
+        return render(request, 'layouts/no_permission.html')
+    obj = get_object_or_404(models.Color, color_id=id)
+    form = forms.ColorForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.instance.updated_by = request.user
+        form.save()
+        return redirect('color_list')
+    context = {
+        'form_name': 'Color List',
+        'parent_link': '/mf/color_list/',
+        'parent_name': 'Color List',
+        'form': form,
+    }
+    return render(request, "layouts/single_form.html", context)
+
+
+def color_delete(request, id):
+    obj = get_object_or_404(models.Color, color_id=id)
+    if request.method == "POST":
+        obj.delete()
+        return redirect('color')
+    return render(request, 'layouts/page-404.html')
+
