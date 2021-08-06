@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="vms@14.161.1.70" uuid="cccd8805-67fa-4c41-b4e8-3c261a282de1">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://14.161.1.70:5455/vms</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="vms_v5@14.161.1.70" uuid="dfa5208a-30ba-422a-921a-6f49d4b38597">
       <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>

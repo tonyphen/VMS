@@ -234,6 +234,20 @@ class Unit(models.Model):
         return self.unit
 
 
+class PaymentTerm(models.Model):
+    term = models.CharField(max_length=200, primary_key=True, verbose_name='Term')
+
+    def __str__(self):
+        return self.term
+
+
+class ShipMethod(models.Model):
+    ship_method = models.CharField(max_length=100, verbose_name='Ship Method')
+
+    def __str__(self):
+        return self.ship_method
+
+
 class UnitConversion(models.Model):
     f_unit = models.ForeignKey(Unit, related_name='f_unit', on_delete=models.CASCADE, verbose_name='From unit')
     t_unit = models.ForeignKey(Unit, related_name='t_unit', on_delete=models.CASCADE, verbose_name='To unit')
@@ -304,3 +318,37 @@ class Product(models.Model):
     def __str__(self):
         return str(self.code)
 
+
+class Bank(models.Model):
+    code = models.CharField(max_length=50, primary_key=True, verbose_name='Bank Code')
+    name = models.CharField(max_length=200, verbose_name='Bank Name')
+    address = models.CharField(max_length=200, verbose_name='Bank address', blank=True, null=True)
+    swift_code = models.CharField(max_length=20, verbose_name='Bank Code', blank=True, null=True)
+    phone = models.CharField(max_length=20, verbose_name='Phone', blank=True, null=True)
+    fax = models.CharField(max_length=20, verbose_name='Fax', blank=True, null=True)
+
+
+class Partner(models.Model):
+    id = models.CharField(max_length=5, primary_key=True, verbose_name='ID')
+    name = models.CharField(max_length=200, verbose_name='Name')
+    description = models.CharField(max_length=255, verbose_name='Description', blank=True, null=True)
+    address = models.CharField(max_length=255, verbose_name='Address', blank=True, null=True)
+    country = models.ForeignKey(Country, related_name='partners', on_delete=models.SET_NULL, verbose_name='Country', blank=True, null=True)
+    tax_code = models.CharField(max_length=20, verbose_name='Tax code', blank=True, null=True)
+    fax_no = models.CharField(max_length=20, verbose_name='Fax No', blank=True, null=True)
+    tel_no = models.CharField(max_length=20, verbose_name='Tel. No', blank=True, null=True)
+    ext_no = models.CharField(max_length=20, verbose_name='Ext', blank=True, null=True)
+    website = models.CharField(max_length=100, verbose_name='Website', blank=True, null=True)
+    contact_person = models.CharField(max_length=100, verbose_name='Contact person', blank=True, null=True)
+    email = models.EmailField(max_length=50, verbose_name='Email', blank=True, null=True)
+    payment_term = models.ForeignKey(PaymentTerm, related_name='partners', on_delete=models.DO_NOTHING, verbose_name='Payment term', blank=True, null=True)
+    ship_method = models.ForeignKey(ShipMethod, related_name='partners', on_delete=models.DO_NOTHING, verbose_name='Ship method', blank=True, null=True)
+    deli_term = models.CharField(max_length=50, verbose_name='Deli term', blank=True, null=True)
+    bank = models.ForeignKey(Bank, related_name='partners', on_delete=models.SET_NULL, verbose_name='Bank Name', blank=True, null=True)
+    bank_acc = models.CharField(max_length=50, verbose_name='Bank Account', blank=True, null=True)
+    active = models.BooleanField(default=True, verbose_name='Status')
+    parent_id = models.ForeignKey('self', verbose_name='Parent', on_delete=models.DO_NOTHING, blank=True, null=True)
+    parent_prefix = models.CharField(max_length=3, verbose_name='Invoice Prefix')
+    created_by = models.ForeignKey(User, related_name='partner_creator', on_delete=models.DO_NOTHING)
+    # created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_by = models.ForeignKey(User, related_name='partner_updater', on_delete=models.DO_NOTHING)

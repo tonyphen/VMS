@@ -5,28 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a46c8cff-10fc-49df-80ea-5906c30f7913" name="Default Changelist" comment="commit">
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0027_auto_20210804_1630.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0028_alter_product_color.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0029_alter_product_sort_group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0030_alter_color_color_group.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0031_alter_color_remark.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0032_auto_20210805_0847.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0033_alter_color_options.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0034_alter_color_options.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0035_alter_color_options.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0036_alter_color_wood_type.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/layouts/no_permission.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/master_file/color_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0037_paymentterm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0038_alter_paymentterm_term.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/master_file/migrations/0039_bank_partner_shipmethod.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/purchasing/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/purchasing/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/purchasing/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/purchasing/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/purchasing/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/purchasing/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/purchasing/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/basic/dictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/basic/dictionary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/master_file/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/master_file/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/master_file/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/includes/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/navigation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/includes/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/includes/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +143,7 @@
       <workItem from="1627271152885" duration="52218000" />
       <workItem from="1627442514087" duration="164000" />
       <workItem from="1627442798293" duration="131785000" />
-      <workItem from="1627869661377" duration="79478000" />
+      <workItem from="1627869661377" duration="85861000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1626600394264</created>
@@ -279,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628063118074</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="commit">
+      <created>1628167625310</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1628167625310</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

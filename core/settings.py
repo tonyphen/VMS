@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.hr',
     'apps.master_file',
     'apps.inventory',
+    'apps.purchasing',
 
 ]
 
